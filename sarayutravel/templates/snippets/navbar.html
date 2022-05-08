@@ -1,0 +1,47 @@
+{% load static %}
+<!--HEADER SECTION-->
+<section>
+    <!-- TOP BAR -->
+    <div class="ed-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="ed-com-t1-right">
+                        <ul>
+                            <li><a href="{% url 'travel:signin' %}">Sign In</a>
+                            </li>
+                            <li><a href="{% url 'travel:signup' %}">Sign Up</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOGO AND MENU SECTION -->
+    <div class="top-logo" data-spy="affix" data-offset-top="250">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="wed-logo">
+                        <a href="{% url 'travel:index' %}"><img src="{% static 'images/logo.png' %}" alt="" />
+                        </a>
+                    </div>
+                    <div class="main-menu">
+                        <ul>
+                            <li><a href="{% url 'travel:index' %}">Home</a>
+                            </li>
+                            <li><a href="{% url 'travel:package' %}">Packages</a>
+                            </li>
+                            <li><a href="{% url 'travel:about' %}">About</a>
+                            </li>
+                            <li><a href="{% url 'travel:contactus' %}">Contact us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
