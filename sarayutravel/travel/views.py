@@ -10,10 +10,11 @@ def IndexView(request):
 
 def PackageView(request):
     getAllPackage = Package.objects.all()
-
+    getNewPackage = Package.objects.all().order_by('-id')[:3]
     context = {
         'Type' : 'Package',
         'Package' : getAllPackage,
+        'NewPackage' : getNewPackage,
     }
     return render(request, 'travel/package.html', context)
     
