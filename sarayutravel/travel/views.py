@@ -25,8 +25,10 @@ def PackageDetailView(request, idPackage):
     return render(request, 'travel/package.html', context)
 
 def AboutView(request):
+    getNewTestimonial = Testimonial.objects.all().order_by('-id')[:4]
     context = {
         'Type' : 'About',
+        'NewTestimonial' : getNewTestimonial,
     }
     return render(request, 'travel/about.html', context)
 
