@@ -3,28 +3,49 @@ from django.shortcuts import render
 from .models import *
 
 def IndexView(request):
-    return render(request, 'travel/index.html')
+    context = {
+        'Type' : 'Home Sarayu',
+    }
+    return render(request, 'travel/index.html', context)
 
 def PackageView(request):
     getAllPackage = Package.objects.all()
-
+    getNewPackage = Package.objects.all().order_by('-id')[:3]
     context = {
+        'Type' : 'Package',
         'Package' : getAllPackage,
+        'NewPackage' : getNewPackage,
     }
     return render(request, 'travel/package.html', context)
     
 def PackageDetailView(request, idPackage):
-
-    return render(request, 'travel/package.html')
+    context = {
+        'Type' : 'Package Detail',
+    }
+    return render(request, 'travel/package.html', context)
 
 def AboutView(request):
-    return render(request, 'travel/about.html')
+    getNewTestimonial = Testimonial.objects.all().order_by('-id')[:4]
+    context = {
+        'Type' : 'About',
+        'NewTestimonial' : getNewTestimonial,
+    }
+    return render(request, 'travel/about.html', context)
 
 def ContactusView(request):
-    return render(request, 'travel/contactus.html')
+    context = {
+        'Type' : 'Contact Us',
+    }
+    return render(request, 'travel/contactus.html', context)
 
 def SigninView(request):
-    return render(request, 'travel/signin.html')
+    context = {
+        'Type' : 'Sign In',
+    }
+    return render(request, 'travel/signin.html', context)
 
 def SignupView(request):
-    return render(request, 'travel/signup.html')
+    context = {
+        'Type' : 'Sign Up',
+    }
+    return render(request, 'travel/signup.html', context)

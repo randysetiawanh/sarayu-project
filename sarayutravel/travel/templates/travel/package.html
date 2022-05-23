@@ -162,7 +162,7 @@
         <div class="container">
             <!-- TITLE & DESCRIPTION -->
             <div class="spe-title">
-                <h2>Hotels <span>booking open now! </span> </h2>
+                <h2><span>New</span> Package tour! </h2>
                 <div class="title-line">
                     <div class="tl-1"></div>
                     <div class="tl-2"></div>
@@ -172,63 +172,26 @@
             </div>
             <!-- HOTEL GRID -->
             <div class="to-ho-hotel">
-                <!-- HOTEL GRID -->
+                {% for items in NewPackage %}
                 <div class="col-md-4">
                     <div class="to-ho-hotel-con">
                         <div class="to-ho-hotel-con-1">
                             <div class="hot-page2-hli-3"> <img src="{% static 'images/hci1.png' %}" alt=""> </div>
-                            <div class="hom-hot-av-tic"> Available Tickets: 42 </div> <img src="{% static 'images/hotels/1.jpg' %}" alt=""> </div>
+                            <div class="hom-hot-av-tic"> Available Tickets: {{items.availablePackage}} </div> <img src="{% static 'images/hotels/1.jpg' %}" alt=""> </div>
                         <div class="to-ho-hotel-con-23">
-                            <div class="to-ho-hotel-con-2"> <a href="hotel-details.html"><h4>GTC Grand Chola</h4></a> </div>
+                            <div class="to-ho-hotel-con-2"> <a href="#"><h4>{{items.namePackage}}</h4></a> </div>
                             <div class="to-ho-hotel-con-3">
                                 <ul>
-                                    <li>City: illunois,united states
+                                    <li>State, Indonesia
                                         <div class="dir-rat-star ho-hot-rat-star"> Rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> </div>
                                     </li>
-                                    <li><span class="ho-hot-pri-dis">$720</span><span class="ho-hot-pri">$420</span> </li>
+                                    <li><span class="ho-hot-pri">Rp{{items.pricePackage|floatformat:2}}</span> </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- HOTEL GRID -->
-                <div class="col-md-4">
-                    <div class="to-ho-hotel-con">
-                        <div class="to-ho-hotel-con-1">
-                            <div class="hot-page2-hli-3"> <img src="{% static 'images/hci1.png' %}" alt=""> </div>
-                            <div class="hom-hot-av-tic"> Available Tickets: 520 </div> <img src="{% static 'images/hotels/2.jpg' %}" alt=""> </div>
-                        <div class="to-ho-hotel-con-23">
-                            <div class="to-ho-hotel-con-2"> <a href="hotel-details.html"><h4>Taaj Grand Resorts</h4></a> </div>
-                            <div class="to-ho-hotel-con-3">
-                                <ul>
-                                    <li>City: illunois,united states
-                                        <div class="dir-rat-star ho-hot-rat-star"> Rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> </div>
-                                    </li>
-                                    <li><span class="ho-hot-pri-dis">$840</span><span class="ho-hot-pri">$540</span> </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- HOTEL GRID -->
-                <div class="col-md-4">
-                    <div class="to-ho-hotel-con">
-                        <div class="to-ho-hotel-con-1">
-                            <div class="hot-page2-hli-3"> <img src="{% static 'images/hci1.png' %}" alt=""> </div>
-                            <div class="hom-hot-av-tic"> Available Tickets: 92 </div> <img src="{% static 'images/hotels/3.jpg' %}" alt=""> </div>
-                        <div class="to-ho-hotel-con-23">
-                            <div class="to-ho-hotel-con-2"> <a href="hotel-details.html"><h4>Keep Grand Hotels</h4></a> </div>
-                            <div class="to-ho-hotel-con-3">
-                                <ul>
-                                    <li>City: illunois,united states
-                                        <div class="dir-rat-star ho-hot-rat-star"> Rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> </div>
-                                    </li>
-                                    <li><span class="ho-hot-pri-dis">$680</span><span class="ho-hot-pri">$380</span> </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
