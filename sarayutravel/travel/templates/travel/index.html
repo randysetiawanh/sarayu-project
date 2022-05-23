@@ -26,7 +26,6 @@
     </div>
 </div>
 <!-- END TOP SEARCH BOX -->
-
 <!--HEADER SECTION-->
 <section>
     <div class="v2-hom-search">
@@ -40,17 +39,8 @@
                     <div class="tourz-hom-ser v2-hom-ser">
                         <ul>
                             <li>
-                                <a href="#" class="waves-effect waves-light btn-large tourz-pop-ser-btn"><img src="{% static 'images/icon/2.png' %}" alt=""> Tour</a>
-                            </li>
-                            <li>
-                                <a href="#" class="waves-effect waves-light btn-large tourz-pop-ser-btn"><img src="{% static 'images/icon/31.png' %}" alt=""> Flight</a>
-                            </li>
-                            <li>
-                                <a href="#" class="waves-effect waves-light btn-large tourz-pop-ser-btn"><img src="{% static 'images/icon/30.png' %}" alt=""> Car Rentals</a>
-                            </li>
-                            <li>
-                                <a href="#" class="waves-effect waves-light btn-large tourz-pop-ser-btn"><img src="{% static 'images/icon/1.png' %}" alt=""> Hotel</a>
-                            </li>								
+                                <a href="{% url 'travel:package' %}" class="waves-effect waves-light btn-large tourz-pop-ser-btn"><img src="{% static 'images/icon/2.png' %}" alt=""> Tour</a>
+                            </li>							
                         </ul>
                     </div>
                 </div>						
@@ -63,121 +53,56 @@
 {% endblock mainBanner %}
     
 {% block mainContent %}
-<!--====== TIPS BEFORE TRAVEL ==========-->
 <section>
-    <div class="rows inn-page-bg com-colo">
-        <div class="container inn-page-con-bg tb-space pad-bot-redu" id="inner-page-title">
+    <div class="rows tb-space pad-bot-redu">
+        <div class="container">
             <!-- TITLE & DESCRIPTION -->
-            <div class="spe-title col-md-12">
-                <h2>Tips <span>Before Travel</span></h2>
+            <div class="spe-title">
+                <h2><span>New</span> Package tour! </h2>
                 <div class="title-line">
                     <div class="tl-1"></div>
                     <div class="tl-2"></div>
                     <div class="tl-3"></div>
                 </div>
-                <p>World's leading tour and travels Booking website,Over 30,000 packages worldwide. Book travel packages and enjoy your holidays with distinctive experience</p>
+                <p>World's leading Hotel Booking website,Over 30,000 Hotel rooms worldwide. Book Hotel rooms and enjoy your holidays with distinctive experience</p>
             </div>
-            <div class="tourb2-ab-p1 com-colo-abou">
-                <div class="col-md-6 col-sm-6">
-                    <div class="tourb2-ab-p1-left">
-                        <h3>Hi! Welcome to Holiday Tour & Travels</h3> <span>Duis pretium gravida nisi, ut pulvinar lorem bibendum eget</span>
-                        <p>Aliquam blandit nisl sem. Mauris quis enim purus. Vivamus nec tortor bibendum risus placerat vulputate at gravida ante. Nam sit amet tellus enim. Phasellus consectetur porttitor lobortis. Integer cursus odio at mattis porttitor. In hac habitasse platea dictumst. Nunc sit amet cursus felis. Etiam venenatis auctor metus, et lacinia elit dignissim non. Aenean auctor semper erat porta dictum.</p>
-                        <p>Fusce velit sem, vestibulum ac enim ut, tincidunt pretium augue. Vestibulum purus sapien, porttitor a porta faucibus, hendrerit eget enim.</p> <a href="#" class="link-btn">Call to us: 13654 87898</a> </div>
+            <!-- NEW PACKAGE GRID -->
+            <div class="to-ho-hotel">
+                {% for items in NewPackage %}
+                <div class="col-md-4">
+                    <div class="to-ho-hotel-con">
+                        <div class="to-ho-hotel-con-1">
+                            <div class="hot-page2-hli-3"> <img src="{% static 'images/hci1.png' %}" alt=""> </div>
+                            <div class="hom-hot-av-tic"> Available Tickets: {{items.availablePackage}} </div> <img src="{{items.imagePackages}}" alt=""> </div>
+                        <div class="to-ho-hotel-con-23">
+                            <div class="to-ho-hotel-con-2"> <a href="#"><h4>{{items.namePackage}}</h4></a> </div>
+                            <div class="to-ho-hotel-con-3">
+                                <ul>
+                                    <li>{{items.cityPackage}}, {{items.countryPackage}}
+                                        <div class="dir-rat-star ho-hot-rat-star"> Rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> </div>
+                                    </li>
+                                    <li><span class="ho-hot-pri">Rp{{items.pricePackage|floatformat:2}}</span> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="tourb2-ab-p1-right"> <img src="{% static 'images/iplace-8.jpg' %}" alt="" /> </div>
-                </div>
-            </div>
-            <div class="tips_travel_1">
-                <ul>
-                    <!--TIPS LIST-->
-                    <li class="col-md-4 col-sm-4">
-                        <div class="tips_travel_2"> <i class="fa fa-address-card-o" aria-hidden="true"></i>
-                            <h4>Bring copies of your passport</h4>
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years </p>
-                        </div>
-                    </li>
-                    <!--TIPS LIST-->
-                    <li class="col-md-4 col-sm-4">
-                        <div class="tips_travel_2"> <i class="fa fa-flag-o" aria-hidden="true"></i>
-                            <h4>Register with your embassy</h4>
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years </p>
-                        </div>
-                    </li>
-                    <!--TIPS LIST-->
-                    <li class="col-md-4 col-sm-4">
-                        <div class="tips_travel_2"> <i class="fa fa-money" aria-hidden="true"></i>
-                            <h4>Always have local cash</h4>
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years </p>
-                        </div>
-                    </li>
-                    <!--TIPS LIST-->
-                    <li class="col-md-4 col-sm-4">
-                        <div class="tips_travel_2"> <i class="fa fa-glide-g" aria-hidden="true"></i>
-                            <h4>Get guidebooks</h4>
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years </p>
-                        </div>
-                    </li>
-                    <!--TIPS LIST-->
-                    <li class="col-md-4 col-sm-4">
-                        <div class="tips_travel_2"> <i class="fa fa-repeat" aria-hidden="true"></i>
-                            <h4>Research events</h4>
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years </p>
-                        </div>
-                    </li>
-                    <!--TIPS LIST-->
-                    <li class="col-md-4 col-sm-4">
-                        <div class="tips_travel_2"> <i class="fa fa-camera-retro" aria-hidden="true"></i>
-                            <h4>Bring your Camera</h4>
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years </p>
-                        </div>
-                    </li>
-                    <!--TIPS LIST-->
-                    <li class="col-md-4 col-sm-4">
-                        <div class="tips_travel_2"> <i class="fa fa-battery-1" aria-hidden="true"></i>
-                            <h4>power bank</h4>
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years </p>
-                        </div>
-                    </li>
-                    <!--TIPS LIST-->
-                    <li class="col-md-4 col-sm-4">
-                        <div class="tips_travel_2"> <i class="fa fa-bicycle" aria-hidden="true"></i>
-                            <h4>bicycle</h4>
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years </p>
-                        </div>
-                    </li>
-                    <!--TIPS LIST-->
-                    <li class="col-md-4 col-sm-4">
-                        <div class="tips_travel_2"> <i class="fa fa-building-o" aria-hidden="true"></i>
-                            <h4>Book your Hotel</h4>
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years </p>
-                        </div>
-                    </li>
-                    <!--TIPS LIST-->
-                    <li class="col-md-4 col-sm-4">
-                        <div class="tips_travel_2"> <i class="fa fa-binoculars" aria-hidden="true"></i>
-                            <h4>Research events</h4>
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years </p>
-                        </div>
-                    </li>
-                    <!--TIPS LIST-->
-                    <li class="col-md-4 col-sm-4">
-                        <div class="tips_travel_2"> <i class="fa fa-bolt" aria-hidden="true"></i>
-                            <h4>Research events</h4>
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years </p>
-                        </div>
-                    </li>
-                    <!--TIPS LIST-->
-                    <li class="col-md-4 col-sm-4">
-                        <div class="tips_travel_2"> <i class="fa fa-bullhorn" aria-hidden="true"></i>
-                            <h4>Research events</h4>
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years </p>
-                        </div>
-                    </li>
-                </ul>
+                {% endfor %}
             </div>
         </div>
     </div>
 </section>
-<!--====== TIPS BEFORE TRAVEL ==========-->
+<!--====== SECTION: FREE CONSULTANT ==========-->
+<section>
+    <div class="tb-space tour-consul">
+        <div class="container">
+            <div class="col-md-6"> <span class="to-con-1">Get in touch with us</span>
+                <h2>Get best travel deals</h2>
+                <p>Get best travel deals for hotels, holidays, trains.Donec eget odio a nunc lacinia rhoncus. Vivamus dignissim magna quis nisl fermentum porttitor. Maecenas venenatis mattis dui at pharetra.Nullam rutrum odio eu viverra accumsan. Nam orci elit, scelerisque eget dui non, sagittis tristique metus. Fusce nec nulla dapibus, fringilla nulla eu, vehicula odio. </p> <span class="to-con-2">Help line: +001 21745 12345</span>
+                <div class="ho-con-cont"> <a href="hotels-list.html" class="to-con-3 link-btn">Book Now</a> <a href="contact.html" class="to-con-4 link-btn">Contact Now</a> </div>
+            </div>
+            <div class="col-md-6 ho-vid"> <img src="{% static 'images/video.png' %}" alt=""> </div>
+        </div>
+    </div>
+</section>
 {% endblock mainContent %}
