@@ -4,12 +4,22 @@ from django.contrib.auth.models import User
 class Package(models.Model):
     namePackage = models.CharField(max_length=50)
     pricePackage = models.FloatField(max_length=10)
-    imagePackage = models.ImageField(default='default-package.png')
+    cityPackage = models.CharField(max_length=50)
+    countryPackage = models.CharField(max_length=50, default='Indonesia')
+    imagePackage = models.ImageField(upload_to='packages/', default='default-packages.jpg')
     availablePackage = models.IntegerField(default=1)
-    descriptionPackage = models.TextField(max_length=500, default="Ini Description")
+    descriptionPackage = models.TextField(max_length=500)
 
     def __str__(self):
         return "{} - Rp.{}".format(self.namePackage, self.pricePackage)
+
+    @property
+    def imagePackages(self):
+        try:
+            url = self.imagePackage.url
+        except:
+            url = ''
+        return url
 
 class Customer(models.Model):
     userCustomer = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)

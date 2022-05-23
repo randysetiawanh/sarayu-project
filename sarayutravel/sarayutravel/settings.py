@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -79,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'travel_db',
         'USER': 'root',
-        'PASSWORD': 'Sarayu123',
+        'PASSWORD': 'Minggu563',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
@@ -123,7 +124,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = [
     BASE_DIR, 'static'
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

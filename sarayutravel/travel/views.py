@@ -1,10 +1,14 @@
 from django.shortcuts import render
+from django.db.models import Count
 
 from .models import *
 
 def IndexView(request):
+    getNewPackage = Package.objects.all().order_by('-id')[:3]
+
     context = {
         'Type' : 'Home Sarayu',
+        'NewPackage' : getNewPackage,
     }
     return render(request, 'travel/index.html', context)
 
