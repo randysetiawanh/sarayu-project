@@ -1,3 +1,4 @@
+from tkinter import Pack
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -17,6 +18,17 @@ class Package(models.Model):
     imagePackage = models.ImageField(upload_to='packages/', default='default-packages.jpg')
     availablePackage = models.IntegerField(default=1)
     descriptionPackage = models.TextField(max_length=500, null=True)
+    LIST_PACKAGE = (
+        ('Honeymoon Package', 'Honeymoon Package'),
+        ('Family Package', 'Family Package'),
+        ('Holiday Package', 'Holiday Package'),
+        ('Regular Package', 'Regular Package'),
+    )
+    categoryPackage = models.CharField(max_length=50, choices=LIST_PACKAGE, default='Regular Package')
+    daysPackage = models.IntegerField(default=1)
+    startPackage = models.DateField(auto_now_add=False, null=True)
+    endPackage = models.DateField(auto_now_add=False, null=True)
+    addonPackage = models.CharField(max_length=200, default='Add-on')
 
     def __str__(self):
         return "{} - Rp.{}".format(self.namePackage, self.pricePackage)
@@ -50,6 +62,17 @@ class CustomPackage(models.Model):
 
     def __str__(self):
         return "{}. {} - {} ({})".format(self.id, self.arrivalCustomPackage, self.departureCustomPackage, self.emailCustomPackage)
+
+class Booking(models.Model):
+    customerBooking = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
+    packageBooking = models.ForeignKey(Package, on_delete=models.SET_NULL, null=True, blank=True)
+    transactionBooking = models.CharField(max_length=100, null=True)
+    phoneBooking = models.CharField(max_length=25)
+    priceBooking = models.FloatField(default=0, null=True)
+    dateBooking = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{}. {} - {} ({})".format(self.id, self.customerBooking, self.packageBooking, self.dateBooking)
 
 class Testimonial(models.Model):
     nameTestimonial = models.CharField(max_length=100, null=True)
