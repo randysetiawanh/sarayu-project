@@ -3,16 +3,7 @@
 
 {% block mainBanner %}
 <section>
-    {% for message in messages %}
-    <div class="container-fluid p-0 no-padding-right no-padding-left sm-no-padding">
-        <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">×</span>
-            </button>
-            {{ message }}
-        </div>
-    </div>
-    {% endfor %}
+    {% include 'snippets/messages.html' %}
     <div class="tb-space cus-pack-form">
         <div class="rows container">
             <div class="spe-title cus-title">
@@ -117,7 +108,7 @@
                             <div class="to-ho-hotel-con-2"> <a href="#"><h4>{{items.namePackage}}</h4></a> </div>
                             <div class="to-ho-hotel-con-3">
                                 <ul>
-                                    <li>State, Indonesia
+                                    <li>{{items.cityPackage}}, {{items.countryPackage}}
                                         <div class="dir-rat-star ho-hot-rat-star"> Rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> </div>
                                     </li>
                                     <li><span class="ho-hot-pri">Rp{{items.pricePackage|floatformat:2}}</span> </li>
@@ -154,26 +145,23 @@
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12 p2">
                     <h3>{{package.namePackage}} <span><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half-o" aria-hidden="true"></i></span></h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.</p>
+                    <p>{{package.descriptionPackage}}</p>
                     <div class="ticket">
                         <ul>
-                            <li>Available Tickets : 48</li>
-                            <li>Start Date : 12.01.2015</li>
-                            <li>End Date : 12.01.2015</li>
+                            <li>Available Tickets : {{package.availablePackage}}</li>
                         </ul>
                     </div>
                     <div class="featur">
                         <h4>Package Locations</h4>
                         <ul>
-                            <li>Rio, Brazil(3 days)</li>
-                            <li>8 Breakfast, 3 Dinners</li>
-                            <li>First class Sightseeing</li>
-                            <li>Lorem ipsum</li>
+                            <li>{{package.cityPackage}}, {{package.countryPackage}}({{package.daysPackage}} days)</li>
+                            <li>{{package.addonPackage}}</li>
+                            <li>{{package.categoryPackage}}</li>
                         </ul>
                     </div>
                     <div class="p2_book">
                         <ul>
-                            <li><a href="booking.html" class="link-btn">Book Now</a>
+                            <li><a href="/booking/{{package.id}}" class="link-btn">Book Now</a>
                             </li>
                             <li><a href="tour-details.html" class="link-btn">View Package</a>
                             </li>
