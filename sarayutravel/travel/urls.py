@@ -8,7 +8,9 @@ app_name = 'travel'
 urlpatterns = [
     path('', views.IndexView, name='index'),
     re_path(r'^booking/(?P<idDetailOrder>[0-9a-f-]+)/$', views.BookingView, name='booking'),
-    path('process_booking/', views.ProcessBookingView, name='process_booking'),
+    re_path(r'^make_payment/(?P<idMakePayment>[\w-]+)/$', views.MakePaymentView, name='makepayment'),
+    re_path(r'^process_booking/(?P<idBooking>[\w-]+)/$', views.ProcessBookingView, name='process_booking'),
+
     path('about/', views.AboutView, name='about'),
     path('contactus/', views.ContactusView, name='contactus'),
     path('signin/', views.SigninView, name='signin'),

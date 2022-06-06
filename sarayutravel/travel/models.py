@@ -3,7 +3,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Customer(models.Model):
-    userCustomer = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
     nameCustomer = models.CharField(max_length=100, null=True)
     emailCustomer = models.CharField(max_length=200)
 
@@ -63,17 +62,31 @@ class CustomPackage(models.Model):
     def __str__(self):
         return "{}. {} - {} ({})".format(self.id, self.arrivalCustomPackage, self.departureCustomPackage, self.emailCustomPackage)
 
+class Payment(models.Model):
+	transactionId = models.CharField(max_length=100, null=True)
+	pricePayment = models.FloatField(default=0, null=True)
+	statusPayment = models.CharField(max_length=50, null=True)
+	methodPayment = models.CharField(max_length=100, null=True)
+	datePayment = models.DateTimeField(auto_now_add=True)
+	completePayment = models.BooleanField(default=False)
+
+	def __str__(self):
+		return "{}. {} - {} Rp.{}".format(self.id, self.transactionId, self.statusPayment, self.pricePayment)
+
 class Booking(models.Model):
     customerBooking = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
     packageBooking = models.ForeignKey(Package, on_delete=models.SET_NULL, null=True, blank=True)
-    transactionBooking = models.CharField(max_length=100, null=True)
+    paymentBooking = models.ForeignKey(Payment, on_delete=models.SET_NULL, null=True, blank=True)
+    codeBooking = models.CharField(max_length=100, null=True)
     phoneBooking = models.CharField(max_length=25)
+    emailBooking = models.EmailField(max_length=100)
     priceBooking = models.FloatField(default=0, null=True)
     dateBooking = models.DateTimeField(auto_now_add=True)
+    completeBooking = models.BooleanField(default=False)
 
     def __str__(self):
         return "{}. {} - {} ({})".format(self.id, self.customerBooking, self.packageBooking, self.dateBooking)
-
+        
 class Testimonial(models.Model):
     nameTestimonial = models.CharField(max_length=100, null=True)
     commentTestimonial = models.TextField(max_length=500)

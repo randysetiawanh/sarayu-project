@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail, BadHeaderError, EmailMessage
 from django.conf import settings
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core.mail import EmailMultiAlternatives
 from django.contrib import messages
 from django.template.loader import render_to_string
+import requests
 import uuid
+import midtransclient
 
 from .models import *
 from .forms import CustomPackageForm
@@ -59,57 +61,110 @@ def PackageView(request):
         'Form' : getForm,
     }
     return render(request, 'travel/package.html', context)
+
+def BookingView(request, idDetailOrder):
+    getPackageDetail = Package.objects.get(id=idDetailOrder)
+    getUUID = uuid.uuid4().hex[:10].upper()
+
+    if request.method == 'POST':
+        if request.POST.get('phone'):
+            getCustomer, created = Customer.objects.get_or_create(emailCustomer = request.POST.get('email'))
+            getCustomer.nameCustomer = request.POST.get('name')
+            getCustomer.save()
+
+            getPost = Booking()
+            getPost.customerBooking = getCustomer
+            getPost.packageBooking = getPackageDetail
+            getPost.phoneBooking = request.POST.get('phone')
+            getPost.emailBooking = request.POST.get('email')
+            getPost.codeBooking = getUUID
+            getPost.priceBooking = getPackageDetail.pricePackage
+            getPost.save()
+            messages.success(request, 'Your booking is created! Please make payment!')
+            return redirect('/make_payment/'+getUUID)
+
+    context = {
+        'Type' : 'Booking Detail',
+        'PackageDetail' : getPackageDetail,
+        'CodeBooking' : getUUID,
+    }
+    return render(request, 'travel/booking_detail.html', context)
+
+def MakePaymentView(request, idMakePayment):
+    getBooking = Booking.objects.get(codeBooking=idMakePayment)
+    getSnap  = midtransclient.Snap(
+        is_production=False,
+        server_key='SB-Mid-server-k667wrTSufdyQh36KeGUfZDT',
+        client_key='SB-Mid-client-iT9YZECZAjAjTewG'
+    )
+    getParam = {
+        "transaction_details": {
+            "order_id": str(idMakePayment),
+            "gross_amount": float(getBooking.priceBooking)
+        }, "credit_card":{
+            "secure" : True
+        }
+    }
+    getTransaction = getSnap.create_transaction(getParam)
+    getTransactionToken = getTransaction['token']
+    print(getTransactionToken)
+    print(getTransaction)
+
+    context = {
+        'Type' : 'Payment Page',
+        'TransactionToken' : getTransactionToken,
+        'Booking' : getBooking,
+        'CodeBooking' : idMakePayment,
+    }
+    return render(request, 'travel/make_payment.html', context)
+
+def ProcessBookingView(request, idBooking):
+    getBookingData, created = Booking.objects.get_or_create(codeBooking=idBooking)
     
+    headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic U0ItTWlkLXNlcnZlci1rNjY3d3JUU3VmZHlRaDM2S2VHVWZaRFQ='
+    }
+    getPayment = requests.get('https://api.sandbox.midtrans.com/v2/'+ idBooking +'/status', headers=headers)
+    getDataPayment = getPayment.json()
+
+    getPaymentData = Payment()
+    getPaymentData.transactionId = getDataPayment['transaction_id']
+    getPaymentData.pricePayment = getDataPayment['gross_amount']
+    getPaymentData.statusPayment = getDataPayment['transaction_status']
+    getPaymentData.methodPayment = getDataPayment['payment_type']
+    if getPaymentData.statusPayment == 'settlement' or getPaymentData.statusPayment == 'capture':
+        getPaymentData.completePayment = True
+    else:
+        getPaymentData.completePayment = False
+    getPaymentData.save()
+
+    if Payment.objects.filter(transactionId=getPaymentData.transactionId).exists():
+        getBookingData.paymentBooking = getPaymentData
+        getBookingData.save()
+
+    getEmailData = { 'Booking' : getBookingData, }
+
+    getHTML = render_to_string("travel/booking/email-confirmation.html", getEmailData)
+    getMessage = EmailMultiAlternatives(
+        subject = 'Booking Confirmation: ' + str(getBookingData.codeBooking),
+        body="Booking Mail",
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        to=[getBookingData.emailBooking],
+        bcc=['randysetiawanh@gmail.com'],
+    )
+    getMessage.attach_alternative(getHTML, "text/html")
+    getMessage.send(fail_silently=False)
+    messages.success(request, 'Thank you for arranging a wonderful trip for us! Our team will contact you shortly!')
+
+    return redirect('travel:package')
+
 def PackageDetailView(request, idPackage):
     context = {
         'Type' : 'Package Detail',
     }
     return render(request, 'travel/package.html', context)
-
-def BookingView(request, idDetailOrder):
-    getPackageDetail = Package.objects.get(id=idDetailOrder)
-    if request.method == 'POST':
-        if request.POST.get('phone'):
-            getEmail = request.POST.get('email')
-            getName = request.POST.get('name')
-            getCustomer, created = Customer.objects.get_or_create(emailCustomer = getEmail)
-            getCustomer.nameCustomer = getName
-            getCustomer.save()
-
-            getUUID = uuid.uuid4()
-            getPost = Booking()
-            getPost.customerBooking = getCustomer
-            getPost.packageBooking = getPackageDetail
-            getPost.phoneBooking = request.POST.get('phone')
-            getPost.transactionBooking = getUUID
-            getPost.priceBooking = getPackageDetail.pricePackage
-            getPost.save()
-
-            getEmailData = {
-                'Customer': getCustomer, 'PackageDetail': getPackageDetail, 'DateBooking': getPost.dateBooking,
-                'Phone': request.POST.get('phone'), 'BookingCode': getPost.transactionBooking,
-            }
-            getHTML = render_to_string("travel/booking/email-confirmation.html", getEmailData)
-            getMessage = EmailMultiAlternatives(
-                subject = 'Booking Confirmation: ' + str(getPost.transactionBooking),
-                body="Booking Mail",
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                to=[getEmail],
-                bcc=['randysetiawanh@gmail.com'],
-            )
-            getMessage.attach_alternative(getHTML, "text/html")
-            getMessage.send(fail_silently=False)
-            messages.success(request, 'Thank you for arranging a wonderful trip for us! Our team will contact you shortly!')
-        return HttpResponseRedirect("/package/")
-
-    context = {
-        'Type' : 'Booking Detail',
-        'PackageDetail' : getPackageDetail,
-    }
-    return render(request, 'travel/booking_detail.html', context)
-
-def ProcessBookingView(request):
-    pass
 
 def AboutView(request):
     getNewTestimonial = Testimonial.objects.all().order_by('-id')[:4]
