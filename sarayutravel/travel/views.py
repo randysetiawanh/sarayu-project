@@ -142,6 +142,9 @@ def ProcessBookingView(request, idBooking):
 
     if Payment.objects.filter(transactionId=getPaymentData.transactionId).exists():
         getBookingData.paymentBooking = getPaymentData
+        getPackage, created = Package.objects.get_or_create(id=getBookingData.packageBooking.id)
+        getPackage.availablePackage = getPackage.availablePackage - 1
+        getPackage.save()
         getBookingData.save()
 
     getEmailData = { 'Booking' : getBookingData, }
