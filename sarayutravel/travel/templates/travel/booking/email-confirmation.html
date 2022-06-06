@@ -104,7 +104,7 @@
                               <tr>
                                 <td style="width:100%;padding-right:0px;padding-left:0px;">
                                   <div align="center" style="line-height:10px">
-                                    <img alt="Alternate text" class="big" src="{{PackageDetail.imagePackages}}" style="display: block; height: auto; border: 0; width: 700px; max-width: 100%;" title="Alternate text" width="700" />
+                                    <img alt="Alternate text" class="big" src="{{Booking.packageBooking.imagePackages}}" style="display: block; height: auto; border: 0; width: 700px; max-width: 100%;" title="Alternate text" width="700" />
                                   </div>
                                 </td>
                               </tr>
@@ -132,7 +132,7 @@
                                     <div class="txtTinyMce-wrapper" style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #0b1560; line-height: 1.2;">
                                       <p style="margin: 0; font-size: 16px; text-align: center;">
                                         <span style="font-size:42px;">
-                                          <strong>Hi {{Customer.nameCustomer}},</strong>
+                                          <strong>Hi {{Booking.customerBooking.nameCustomer}},</strong>
                                         </span>
                                       </p>
                                     </div>
@@ -147,10 +147,10 @@
                                     <div class="txtTinyMce-wrapper" style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 18px; color: #555555; line-height: 1.5;">
                                       <p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 22.5px;">
                                         <span style="font-size:15px;">Your package to <span style="color:#0b1560;">
-                                            <strong>{{PackageDetail.cityPackage}}, {{PackageDetail.countryPackage}}</strong>
+                                            <strong>{{Booking.packageBooking.cityPackage}}, {{Booking.packageBooking.countryPackage}}</strong>
                                           </span> starts on <span style="color:#0b1560;">
                                             <strong>
-                                              <span style="">{{PackageDetail.startPackage}}</span>
+                                              <span style="">{{Booking.packageBooking.startPackage}}</span>
                                             </strong>
                                       </p>
                                     </div>
@@ -230,7 +230,7 @@
                                   <div style="font-family: sans-serif">
                                     <div class="txtTinyMce-wrapper" style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 21.6px; color: #555555; line-height: 1.8;">
                                       <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 27px;">
-                                        <span style="font-size:15px;">{{PackageDetail.namePackage}}</span>
+                                        <span style="font-size:15px;">{{Booking.packageBooking.namePackage}}</span>
                                       </p>
                                     </div>
                                   </div>
@@ -278,7 +278,7 @@
                                   <div style="font-family: sans-serif">
                                     <div class="txtTinyMce-wrapper" style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 21.6px; color: #555555; line-height: 1.8;">
                                       <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 27px;">
-                                        <span style="font-size:15px;">{{PackageDetail.cityPackage}}, {{PackageDetail.countryPackage}}</span>
+                                        <span style="font-size:15px;">{{Booking.packageBooking.cityPackage}}, {{Booking.packageBooking.countryPackage}}</span>
                                       </p>
                                     </div>
                                   </div>
@@ -326,10 +326,11 @@
                                   <div style="font-family: sans-serif">
                                     <div class="txtTinyMce-wrapper" style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 21.6px; color: #555555; line-height: 1.8;">
                                       <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 27px;">
-                                        <span style="font-size:15px;">{{PackageDetail.daysPackage}}</span>
+                                        <span style="font-size:15px;">{{Booking.packageBooking.daysPackage}} Days</span>
                                       </p>
                                       <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 27px;">
-                                        <span style="font-size:15px;">Rp. {{PackageDetail.pricePackage}}</span>
+                                        <span style="font-size:15px;">Rp. {{Booking.paymentBooking.pricePayment}}</span>
+                                        <span style="font-size:15px;">Rp. {{Booking.packageBooking.pricePackage}}</span>
                                       </p>
                                     </div>
                                   </div>

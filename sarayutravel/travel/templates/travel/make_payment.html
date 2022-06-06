@@ -1,0 +1,95 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block mainBanner %}
+<section>
+    {% include 'snippets/messages.html' %}
+    <div id="review-information" class="tr-register">
+        <div class="tr-regi-form v2-search-form">
+            <h4>Review <span>Booking Information</span></h4>
+            <form class="contact__form" method="POST" id="form">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text"  class="validate" name="name" value="{{Booking.customerBooking.nameCustomer}}" readonly>
+                        <label>Enter your name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input type="number" class="validate" name="phone" value="{{Booking.phoneBooking}}" readonly>
+                        <label>Enter your phone</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input type="email" class="validate" name="email" value="{{Booking.customerBooking.emailCustomer}}" readonly>
+                        <label>Enter your email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s9">
+                        <input type="text"  class="validate" name="package" value="{{Booking.packageBooking.namePackage}}" readonly>
+                        <label>Enter your package</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input type="text"  class="validate" name="price" value="Rp. {{Booking.priceBooking|floatformat:2}}" readonly>
+                        <label>Price package</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s7">
+                        <input type="text" id="select-city-1" class="autocomplete validate" name="place" value="{{Booking.packageBooking.cityPackage}}, {{Booking.packageBooking.countryPackage}}" readonly>
+                        <label for="select-city-1">Select City or Place</label>
+                    </div>
+                    <div class="input-field col s5">
+                        <select name="category-package">
+                            <option value="{{Booking.packageBooking.categoryPackage}}">{{Booking.packageBooking.categoryPackage}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input type="text" id="from" name="arrival" value="{{Booking.packageBooking.startPackage|date:'d/m/Y'}}" disabled readonly>
+                        <label for="from">Start Date</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input type="text" id="to" name="departure" value="{{Booking.packageBooking.endPackage|date:'d/m/Y'}}" disabled readonly>
+                        <label for="to">End Date</label>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="input-field col s12">
+                    <button id="submit-booking" type="submit" class="waves-effect waves-light full-btn btn-large full-btn">Make Payment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock mainBanner %}
+
+{% block mainContent %}
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-iT9YZECZAjAjTewG"></script>
+<script type="text/javascript">
+    document.getElementById('submit-booking').addEventListener('click', function(e){
+        submitPayment()
+    })
+
+    function submitPayment(){
+        snap.pay('{{TransactionToken}}', {
+        onSuccess: function(result){
+            document.getElementById('submit-booking').classList.add("hidden");
+            alert('Your Payment is successfuly.');
+            window.location.href = "/process_booking/{{CodeBooking}}"
+        },
+        onPending: function(result){
+            alert('Your Payment still pending.');
+            window.location.href = "{% url 'travel:package' %}"
+        },
+        onError: function(result){
+            alert('Your Payment is failed.');
+            window.location.href = "{% url 'travel:package' %}"
+        }
+        });
+    }
+</script>
+{% endblock mainContent %}
