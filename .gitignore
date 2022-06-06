@@ -129,3 +129,6 @@ dmypy.json
 .pyre/
 Template/
 venvSarayu/
+sarayuVenv/
+sarayutravel/travel/migrations
+sarayutravel/media
