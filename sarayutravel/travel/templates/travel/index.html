@@ -2,30 +2,6 @@
 {% load static %}
 
 {% block mainBanner %}
-<!-- TOP SEARCH BOX -->
-<div class="search-top">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="search-form">
-                <form class="tourz-search-form">
-                    <div class="input-field">
-                        <input type="text" id="select-city" class="autocomplete">
-                        <label for="select-city">Enter city</label>
-                    </div>
-                    <div class="input-field">
-                        <input type="text" id="select-search" class="autocomplete">
-                        <label for="select-search" class="search-hotel-type">Search over a million tour and travels, sight seeings, hotels and more</label>
-                    </div>
-                    <div class="input-field">
-                        <input type="submit" value="search" class="waves-effect waves-light tourz-sear-btn"> </div>
-                </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- END TOP SEARCH BOX -->
 <!--HEADER SECTION-->
 <section>
     <div class="v2-hom-search">
@@ -33,14 +9,14 @@
             <div class="row">
                 <div class="col-md-6">
                 <div class="v2-ho-se-ri">
-                    <h5>World's leading tour and travels template</h5>
-                    <h1>Tour Package booking now!</h1>
-                    <p>Experience the various exciting tour and travel packages and Make hotel reservations, find vacation packages, search cheap hotels and events</p>
+                    <h5>Best local's leading tour and travels</h5>
+                    <h1>Ayo Booking Sekarang!</h1>
+                    <p>Wujudkan pengalaman menarik dengan Sarayu Travel sebagai guide mu!</p>
                     <div class="tourz-hom-ser v2-hom-ser">
                         <ul>
                             <li>
                                 <a href="{% url 'travel:package' %}" class="waves-effect waves-light btn-large tourz-pop-ser-btn">
-                                <img src="{% static 'images/icon/2.png' %}" alt=""> Tour</a>
+                                <img src="{% static 'images/icon/2.png' %}" alt="">Booking</a>
                             </li>							
                         </ul>
                     </div>
@@ -59,13 +35,13 @@
         <div class="container">
             <!-- TITLE & DESCRIPTION -->
             <div class="spe-title">
-                <h2><span>New</span> Package tour! </h2>
+                <h2>Paket Wisata <span>Terbaru!</span></h2>
                 <div class="title-line">
                     <div class="tl-1"></div>
                     <div class="tl-2"></div>
                     <div class="tl-3"></div>
                 </div>
-                <p>World's leading Hotel Booking website,Over 30,000 Hotel rooms worldwide. Book Hotel rooms and enjoy your holidays with distinctive experience</p>
+                <p>Penyedia Paket Wisata Dari Berbagai Destinasi di Indonesia Dengan Lebih Dari 300 Paket Yang Sudah Terjual!</p>
             </div>
             <!-- NEW PACKAGE GRID -->
             <div class="to-ho-hotel">
@@ -97,13 +73,23 @@
 <section>
     <div class="tb-space tour-consul">
         <div class="container">
-            <div class="col-md-6"> <span class="to-con-1">Get in touch with us</span>
-                <h2>Get best travel deals</h2>
-                <p>Get best travel deals for hotels, holidays, trains.Donec eget odio a nunc lacinia rhoncus. Vivamus dignissim magna quis nisl fermentum porttitor. Maecenas venenatis mattis dui at pharetra.Nullam rutrum odio eu viverra accumsan. Nam orci elit, scelerisque eget dui non, sagittis tristique metus. Fusce nec nulla dapibus, fringilla nulla eu, vehicula odio. </p> <span class="to-con-2">Help line: +001 21745 12345</span>
+            <div class="col-md-6"> <span class="to-con-1">Tetap terhubung dengan kami yuk!</span>
+                <h2>Dapatkan penawaran perjalanan terbaik</h2>
+                <p>Dapatkan berbagai penawaran dengan harga menarik tiap minggunya dengan cara mengunjungi dan mengikuti akun sosial media Sarayu Travel, akan banyak sekali promo sampai giveaway perjalanan menarik bagi pengikut yang beruntung. Collect moments not things! </p> <span class="to-con-2">Help line: +62 857 7086 0049</span>
                 <div class="ho-con-cont"> <a href="hotels-list.html" class="to-con-3 link-btn">Book Now</a> <a href="contact.html" class="to-con-4 link-btn">Contact Now</a> </div>
             </div>
-            <div class="col-md-6 ho-vid"> <img src="{% static 'images/video.png' %}" alt=""> </div>
+            <div class="col-md-6 ho-vid"> <img src="{% static 'images/img/touch.jpg' %}" alt=""> </div>
         </div>
+    </div>
+</section>
+
+<section>
+    <div class="icon-float">
+        <ul>
+            <li><a href="https://www.instagram.com/sarayu.travel/" class="ig2"><i class="fa fa-instagram" aria-hidden="true"></i></a> </li>
+            <li><a href="https://api.whatsapp.com/send/?phone=%2B6285770860049&text&app_absent=0" class="wa1"><i class="fa fa-whatsapp" aria-hidden="true"></i></a> </li>
+            <li><a href="mailto:travelsarayu9@gmail.com" class="sh1"><i class="fa fa-envelope-o" aria-hidden="true"></i></a> </li>
+        </ul>
     </div>
 </section>
 {% endblock mainContent %}
