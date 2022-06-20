@@ -1,6 +1,6 @@
 {% extends 'main.html' %}
 {% load static %}
-
+{% load humanize %}
 {% block mainBanner %}
  <!--HEADER SECTION-->
  <section>
@@ -48,13 +48,13 @@
                             <div class="hot-page2-hli-3"> <img src="{% static 'images/hci1.png' %}" alt=""> </div>
                             <div class="hom-hot-av-tic"> Available Tickets: {{items.availablePackage}} </div> <img src="{{items.imagePackages}}" alt=""> </div>
                         <div class="to-ho-hotel-con-23">
-                            <div class="to-ho-hotel-con-2"> <a href="#"><h4>{{items.namePackage}}</h4></a> </div>
+                            <div class="to-ho-hotel-con-2"> <a href="/package/detail/{{items.id}}"><h4>{{items.namePackage}} Trip ({{items.daysPackage}} Days, {{items.countNights}} Nights)</h4></a> </div>
                             <div class="to-ho-hotel-con-3">
                                 <ul>
                                     <li>{{items.cityPackage}}, {{items.countryPackage}}
                                         <div class="dir-rat-star ho-hot-rat-star"> Rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> </div>
                                     </li>
-                                    <li><span class="ho-hot-pri">Rp{{items.pricePackage|floatformat:2}}</span> </li>
+                                    <li><span class="ho-hot-pri">Rp{{items.pricePackage|intcomma}}</span> </li>
                                 </ul>
                             </div>
                         </div>

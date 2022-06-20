@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail, BadHeaderError, EmailMessage
+from django.db.models import F
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core.mail import EmailMultiAlternatives
@@ -22,8 +23,8 @@ def IndexView(request):
     return render(request, 'travel/index.html', context)
 
 def PackageView(request):
-    getAllPackage = Package.objects.all()
-    getNewPackage = Package.objects.all().order_by('-id')[:3]
+    getAllPackage = Package.objects.all().annotate(countNights=F('daysPackage')-1)
+    getNewPackage = Package.objects.all().annotate(countNights=F('daysPackage')-1).order_by('-id')[:3]
 
     if request.method == 'POST':
         getForm = CustomPackageForm(request.POST)
@@ -164,7 +165,7 @@ def ProcessBookingView(request, idBooking):
     return redirect('travel:package')
 
 def PackageDetailView(request, idPackage):
-    getPackageDetail = Package.objects.get(id=idPackage)
+    getPackageDetail = Package.objects.annotate(countNights=F('daysPackage')-1).get(id=idPackage)
 
     context = {
         'Type' : 'Package Detail',

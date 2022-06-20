@@ -28,7 +28,7 @@ class Package(models.Model):
     daysPackage = models.IntegerField(default=1)
     startPackage = models.DateField(auto_now_add=False, null=True)
     endPackage = models.DateField(auto_now_add=False, null=True)
-    addonPackage = models.CharField(max_length=200, default='Add-on')
+    addonPackage = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
         return "{} - Rp.{}".format(self.namePackage, self.pricePackage)
@@ -40,16 +40,6 @@ class Package(models.Model):
         except:
             url = ''
         return url
-
-    @property
-    def countDatePackage(self):
-        getStartDate = self.startPackage
-        getEndDate = self.endPackage
-        countDate = getEndDate - getStartDate
-        print(countDate)
-
-        return countDate
-
 
 class CustomPackage(models.Model):
     nameCustomPackage = models.CharField(max_length=200)
