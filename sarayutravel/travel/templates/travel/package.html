@@ -16,65 +16,65 @@
                 <p>World's leading tour and travels Booking website,Over 30,000 packages worldwide. Book travel packages and enjoy your holidays with distinctive experience</p>
             </div>
             <div class="cus-book-form form_1">
-                    <form class="v2-search-form" method="post">
-                        {% csrf_token %}
-                        <div class="row">
-                            <div class="input-field col s12">
-                                {{Form.nameCustomPackage}}
-                                <label>{{Form.nameCustomPackage.label}}</label>
-                            </div>
+                <form class="v2-search-form" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="input-field col s12">
+                            {{Form.nameCustomPackage}}
+                            <label>{{Form.nameCustomPackage.label}}</label>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                {{Form.emailCustomPackage}}
-                                <label>{{Form.emailCustomPackage.label}}</label>
-                            </div>
-                            <div class="input-field col s6">
-                                {{Form.phoneCustomPackage}}
-                                <label>{{Form.phoneCustomPackage.label}}</label>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            {{Form.emailCustomPackage}}
+                            <label>{{Form.emailCustomPackage.label}}</label>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s4">
-                                {{Form.guestCustomPackage}}
-                                <label>{{Form.guestCustomPackage.label}}</label>
-                            </div>
-                            <div class="input-field col s8">
-                                {{Form.placeCustomPackage}}
-                                <label for="select-city-1">{{Form.placeCustomPackage.label}}</label>
-                            </div>
+                        <div class="input-field col s6">
+                            {{Form.phoneCustomPackage}}
+                            <label>{{Form.phoneCustomPackage.label}}</label>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                {{Form.selectedCustomPackage}}
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s4">
+                            {{Form.guestCustomPackage}}
+                            <label>{{Form.guestCustomPackage.label}}</label>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                {{Form.arrivalCustomPackage}}
-                                <label for="from">{{Form.arrivalCustomPackage.label}}</label>
-                            </div>
-                            <div class="input-field col s6">
-                                {{Form.departureCustomPackage}}
-                                <label for="to">{{Form.departureCustomPackage.label}}</label>
-                            </div>
+                        <div class="input-field col s8">
+                            {{Form.placeCustomPackage}}
+                            <label for="select-city-1">{{Form.placeCustomPackage.label}}</label>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                {{Form.minpriceCustomPackage}}
-                                <label>{{Form.minpriceCustomPackage.label}}</label>
-                            </div>
-                            <div class="input-field col s6">
-                                {{Form.maxpriceCustomPackage}}
-                                <label>{{Form.maxpriceCustomPackage.label}}</label>
-                            </div>								
-                        </div>						
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <button type="submit" onclick="submitAlert()" class="waves-effect waves-light btn-large full-btn">Book Now</button>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            {{Form.selectedCustomPackage}}
                         </div>
-                    </form>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            {{Form.arrivalCustomPackage}}
+                            <label for="from">{{Form.arrivalCustomPackage.label}}</label>
+                        </div>
+                        <div class="input-field col s6">
+                            {{Form.departureCustomPackage}}
+                            <label for="to">{{Form.departureCustomPackage.label}}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            {{Form.minpriceCustomPackage}}
+                            <label>{{Form.minpriceCustomPackage.label}}</label>
+                        </div>
+                        <div class="input-field col s6">
+                            {{Form.maxpriceCustomPackage}}
+                            <label>{{Form.maxpriceCustomPackage.label}}</label>
+                        </div>								
+                    </div>						
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button type="submit" onclick="submitAlert()" class="waves-effect waves-light btn-large full-btn">Book Now</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -145,7 +145,7 @@
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12 p2">
                     <h3>{{package.namePackage}} <span><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half-o" aria-hidden="true"></i></span></h3>
-                    <p>{{package.descriptionPackage}}</p>
+                    <p>{{package.descriptionPackage|truncatechars:100}}</p>
                     <div class="ticket">
                         <ul>
                             <li>Available Tickets : {{package.availablePackage}}</li>
@@ -163,7 +163,7 @@
                         <ul>
                             <li><a href="/booking/{{package.id}}" class="link-btn">Book Now</a>
                             </li>
-                            <li><a href="tour-details.html" class="link-btn">View Package</a>
+                            <li><a href="/package/detail/{{package.id}}" class="link-btn">View Package</a>
                             </li>
                         </ul>
                     </div>

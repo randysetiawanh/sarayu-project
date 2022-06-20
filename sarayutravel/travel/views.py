@@ -164,10 +164,13 @@ def ProcessBookingView(request, idBooking):
     return redirect('travel:package')
 
 def PackageDetailView(request, idPackage):
+    getPackageDetail = Package.objects.get(id=idPackage)
+
     context = {
         'Type' : 'Package Detail',
+        'DetailPackage' : getPackageDetail,
     }
-    return render(request, 'travel/package.html', context)
+    return render(request, 'travel/detail_package.html', context)
 
 def AboutView(request):
     getNewTestimonial = Testimonial.objects.all().order_by('-id')[:4]

@@ -1,6 +1,7 @@
 from tkinter import Pack
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime
 
 class Customer(models.Model):
     nameCustomer = models.CharField(max_length=100, null=True)
@@ -39,6 +40,16 @@ class Package(models.Model):
         except:
             url = ''
         return url
+
+    @property
+    def countDatePackage(self):
+        getStartDate = self.startPackage
+        getEndDate = self.endPackage
+        countDate = getEndDate - getStartDate
+        print(countDate)
+
+        return countDate
+
 
 class CustomPackage(models.Model):
     nameCustomPackage = models.CharField(max_length=200)
