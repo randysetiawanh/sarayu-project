@@ -4204,11 +4204,18 @@
 /* HOME PAGE SEARCH BOX 
 /*-------------------------------------------------*/
  .tourz-search {
-     background: url(../images/consul-bg.jpg) no-repeat;
+     background: url(../images/slider/1.jpg) no-repeat;
      position: relative;
      background-size: cover;
 }
- .tourz-search {
+ .tourz-search:before {
+     content: '';
+     position: absolute;
+     background: linear-gradient(to bottom, rgba(22, 40, 105, 0.91) 1%, rgba(0, 0, 0, 0.41) 100%);
+     top: 0px;
+     bottom: 0px;
+     left: 0px;
+     width: 100%;
 }
  .tourz-search-form {
 }
@@ -4908,7 +4915,7 @@
 /* REGISTER AND LOGIN 
 /*-------------------------------------------------------*/
  .tr-register {
-     background: url(../images/face.jpg) #e6e6e6;
+     background: url(../images/face.jpg) no-repeat;
      position: relative;
     /* overflow: hidden;
      */
@@ -7725,7 +7732,7 @@
  .cus-pack-form:before{
      content: '';
      position: absolute;
-     background: linear-gradient(to bottom, rgba(22, 40, 105, 0.91) 46%, rgba(0, 0, 0, 0.41) 100%);
+     background: linear-gradient(to bottom, rgba(22, 40, 105, 0.91) 1%, rgba(0, 0, 0, 0.41) 100%);
      top: 0px;
      bottom: 0px;
      left: 0px;

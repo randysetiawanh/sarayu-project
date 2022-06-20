@@ -2,39 +2,10 @@
 {% load static %}
 
 {% block mainBanner %}
+<!--====== LOCATON ==========-->
 <section>
-    <div>
-        <div>
-            <div>
-        <div class="slider fullscreen">
-            <ul class="slides">
-                <li> <img src="{% static 'images/slider/1.jpg' %}" alt="">
-                    <!-- random image -->
-                    <div class="caption center-align slid-cap">
-                        <p><h2>ENJOY</h2></p>
-                    </div>
-                </li>
-                <li> <img src="{% static 'images/slider/2.jpg' %}" alt="">
-                    <!-- random image -->
-                    <div class="caption center-align slid-cap">
-                        <h2> </h2>
-                        <h2>FEEL</h2></p></div>
-                </li>
-                <li> <img src="{% static 'images/slider/3.jpg' %}" alt="">
-                    <!-- random image -->
-                    <div class="caption center-align slid-cap">
-                        <h2> </h2>
-                        <p><h2>REMEMBER!</h2></p></div>
-                </li>
-                <li> <img src="{% static 'images/slider/4.jpg' %}" alt="">
-                    <!-- random image -->
-                    <div class="caption center-align slid-cap">
-                        <p><h2>SARAYU TRAVEL</h2></p></div>
-                </li>
-            </ul>
-        </div>
-            </div>
-        </div>
+    <div class="rows contact-map map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.309254519615!2d106.9191077!3d-6.3539972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6993369105c3ab%3A0xb83d6e5b89970ea1!2sJl.%20Nangka%20No.36%2C%20RT.001%2FRW.009%2C%20Jatiraden%2C%20Kec.%20Jatisampurna%2C%20Kota%20Bks%2C%20Jawa%20Barat%2017433!5e0!3m2!1sid!2sid!4v1652281285625!5m2!1sid!2sid" allowfullscreen></iframe>
     </div>
 </section>
 {% endblock mainBanner %}
@@ -70,25 +41,11 @@
                 </div>
                 <!-- TOUR PLACE 3 -->
                 <div class="col-md-4 col-sm-6 col-xs-12 b_packages wow fadeInUp" data-wow-duration="1.5s">
-                    <div class="v_place_img"><img src="{% static 'images/t2.png' %}"> </div>
+                    <div class="v_place_img"><img src="{% static 'images/img/t2.jpg' %}"> </div>
                     <div class="b_pack rows">
                         <div class="col-md-8 col-sm-8">
-                            <h4><a href="tour-details.html">South India<span class="v_pl_name">(India)</span></a></h4> </div>
+                            <h4><a href="tour-details.html">BROMO TRIP SARAYU<span class="v_pl_name">(2022)</span></a></h4> </div>
                         <div class="col-md-4 col-sm-4 pack_icon">
-                            <ul>
-                                <li>
-                                    <a href="#"><img src="{% static 'images/clock.png' %}" alt="Date" title="Tour Timing"> </a>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="{% static 'images/info.png' %}" alt="Details" title="View more details"> </a>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="{% static 'images/price.png' %}" alt="Price" title="Price"> </a>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="{% static 'images/map.png' %}" alt="Location" title="Location"> </a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -108,14 +65,14 @@
                     <div class="tl-2"></div>
                     <div class="tl-3"></div>
                 </div>
-                <p>World's leading tour and travels Booking website,Over 30,000 packages worldwide.</p>
+                <p>Berikut adalah testimoni dari beberapa pelanggan terbaru Sarayu Travel yang sudah merasakan pengalaman menarik di berbagai destinasi Indonesia. </p>
             </div>
             <div class="p_testimonial">
                 {% for testimonial in NewTestimonial %}
                 <!--====== TESTIMONIALS ======-->
                 <div class="col-md-6">
                     <div class="p-tesi">
-                        <div class="col-md-3 col-sm-3"> <img src="{% static 'images/testi_img.png' %}" alt="">
+                        <div class="col-md-3 col-sm-3"> <img src="{% static 'images/img/test.png' %}" alt="">
                         </div>
                         <div class="col-md-9 col-sm-9">
                             <h4>{{testimonial.nameTestimonial}}</h4>
