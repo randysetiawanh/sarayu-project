@@ -150,7 +150,7 @@ def ProcessBookingView(request, idBooking):
 
     getEmailData = { 'Booking' : getBookingData, }
 
-    getHTML = render_to_string("travel/booking/email-confirmation.html", getEmailData)
+    getHTML = render_to_string("travel/email/email-confirmation.html", getEmailData)
     getMessage = EmailMultiAlternatives(
         subject = 'Booking Confirmation: ' + str(getBookingData.codeBooking),
         body="Booking Mail",
@@ -174,14 +174,48 @@ def PackageDetailView(request, idPackage):
     return render(request, 'travel/detail_package.html', context)
 
 def AboutView(request):
-    getNewTestimonial = Testimonial.objects.all().order_by('-id')[:4]
+    getNewTestimonials = Testimonial.objects.all().order_by('-id')[:4]
+    getCountPackages = Package.objects.all().count()
+    getCountTestimonials = Testimonial.objects.all().count()
+    getCountBookings = Booking.objects.all().count()
+
     context = {
         'Type' : 'About',
-        'NewTestimonial' : getNewTestimonial,
+        'NewTestimonial' : getNewTestimonials,
+        'CountPackages' : getCountPackages,
+        'CountTestimonials' : getCountTestimonials,
+        'CountBookings' : getCountBookings,
     }
     return render(request, 'travel/about.html', context)
 
 def ContactusView(request):
+    if request.method == 'POST':
+        if request.POST.get('email'):
+            getDataForm = request.POST.get
+
+            getContactData = Contact()
+            getContactData.nameContact = getDataForm('name')
+            getContactData.emailContact = getDataForm('email')
+            getContactData.phoneContact = getDataForm('phone')
+            getContactData.subjectContact = getDataForm('subject')
+            getContactData.messageContact = getDataForm('message')
+            getContactData.save()
+
+            getEmailData = { 'Name' : getDataForm('name'), 'Email' : getDataForm('email'), 'Phone' : getDataForm('phone'), 'Subject' : getDataForm('subject'), 'Message' : getDataForm('message')}
+
+            getHTML = render_to_string("travel/email/contact.html", getEmailData)
+            getMessage = EmailMultiAlternatives(
+                subject = 'Contact: ' + str(getDataForm('subject') + ' From ' + str(getDataForm('email'))),
+                body="Booking Mail",
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                to=[settings.DEFAULT_CONTACT_EMAIL]
+            )
+            getMessage.attach_alternative(getHTML, "text/html")
+            getMessage.send(fail_silently=False)
+            messages.success(request, 'Terima kasih telah menghubungi kami, tim kami akan segera menghubungi Anda!')
+
+            return redirect('travel:contactus')
+
     context = {
         'Type' : 'Contact Us',
     }

@@ -12,7 +12,7 @@ urlpatterns = [
     re_path(r'^process_booking/(?P<idBooking>[\w-]+)/$', views.ProcessBookingView, name='process_booking'),
 
     path('about/', views.AboutView, name='about'),
-    path('contactus/', views.ContactusView, name='contactus'),
+    path('contact_us/', views.ContactusView, name='contactus'),
     path('signin/', views.SigninView, name='signin'),
     path('signup/', views.SignupView, name='signup'),
     path('package/', views.PackageView, name='package'),

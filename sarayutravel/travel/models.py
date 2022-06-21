@@ -95,3 +95,15 @@ class Testimonial(models.Model):
 
     def __str__(self):
         return "{} ({})".format(self.nameTestimonial, self.dateTestimonial)
+
+class Contact(models.Model):
+    nameContact = models.CharField(max_length=100, null=True)
+    emailContact = models.EmailField(max_length=200, null=True)
+    phoneContact = models.CharField(max_length=20, null=True)
+    subjectContact = models.CharField(max_length=100, null=True)
+    messageContact = models.TextField(max_length=500, null=True)
+    statusContact = models.BooleanField(default='False')
+    dateContact = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{}. {} ({})".format(self.id, self.nameContact, self.emailContact)
