@@ -55,8 +55,8 @@
                     <h3>Description</h3>
                     {{DetailPackage.descriptionPackage|linebreaksbr|truncatechars:500}}
                 </div>
-                <div class="tour_head1 hotel-book-room">
-                    <h3>Photo Gallery</h3>
+                <div class="tour_head1">
+                    <h3>Photo Package</h3>
                     <div id="myCarousel1" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner carousel-inner1" role="listbox">
                             <div class="item active"> <img src="{{DetailPackage.imagePackages}}" alt="{{DetailPackage.namePackage}}" width="460" height="345"> </div>
@@ -88,7 +88,7 @@
                         <tr>
                             <td>{{DetailPackage.startPackage}}</td>
                             <td>{{DetailPackage.endPackage}}</td>
-                            <td>{{DetailPackage.daysPackage}}Days, {{DetailPackage.countNights}} Nights</td>
+                            <td>{{DetailPackage.daysPackage}} Days, {{DetailPackage.countNights}} Nights</td>
                         </tr>
                     </table><br>
                     <table>
@@ -99,7 +99,7 @@
                         </tr>
                         <tr>
                             <td>Rp {{DetailPackage.pricePackage|intcomma}}</td>
-                            <td>{{DetailPackage.availablePackage}}</td>
+                            <td>{{DetailPackage.availablePackage}} left</td>
                             <td>{% if DetailPackage.addOnPackage is null %}-{% else %}{{DetailPackage.availablePackage}}{% endif %}</td>
                         </tr>
                     </table><br>
