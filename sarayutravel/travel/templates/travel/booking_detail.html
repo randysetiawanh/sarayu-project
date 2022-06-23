@@ -4,65 +4,74 @@
 {% block mainBanner %}
 <section>
     {% include 'snippets/messages.html' %}
-    <div class="tr-register">
-        <div class="tr-regi-form">
-            <h4>Create a Booking</h4>
-            <p></p>
-            <form class="col s12" method="POST" id="form" onsubmit="alert('Your Booking is submited successfuly.');">
-                {% csrf_token %}
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input type="text" class="validate" name="name" required>
-                        <label>Name</label>
-                    </div>
+    <div class="tb-space cus-pack-form" style="background: url('') no-repeat #fff;">
+        <div class="rows container">
+            <div class="spe-title cus-title">
+                <h2>Yuk, <span>Custom Paket Tour</span> Kamu Sekarang!</h2>
+                <div class="title-line">
+                    <div class="tl-1"></div>
+                    <div class="tl-2"></div>
+                    <div class="tl-3"></div>
                 </div>
-                <div class="row">
-                    <div class="input-field col s4">
-                        <input type="number" class="validate" name="phone" required>
-                        <label>Mobile</label>
+                <p>Selain paket dari Sarayu Travel, kamu juga bisa membuat paket tour kemanapun dan kapanpun sesukamu loh!</p>
+            </div>
+            <div class="cus-book-form2 form_1">
+                <form class="v2-search-form" method="post" onsubmit="alert('Your Booking is submited successfuly.');">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" class="validate" name="name" required>
+                            <label>Name</label>
+                        </div>
                     </div>
-                    <div class="input-field col s8">
-                        <input type="email" class="validate" name="email" required>
-                        <label>Email</label>
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <input type="number" class="validate" name="phone" required>
+                            <label>Mobile</label>
+                        </div>
+                        <div class="input-field col s8">
+                            <input type="email" class="validate" name="email" required>
+                            <label>Email</label>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s9">
-                        <input type="text"  class="validate" name="package" value="{{PackageDetail.namePackage}}" readonly>
-                        <label>Enter your package</label>
+                    <div class="row">
+                        <div class="input-field col s9">
+                            <input type="text"  class="validate" name="package" value="{{PackageDetail.namePackage}}" readonly>
+                            <label>Enter your package</label>
+                        </div>
+                        <div class="input-field col s3">
+                            <input type="text"  class="validate" name="price" value="Rp. {{PackageDetail.pricePackage|floatformat:2}}" readonly>
+                            <label>Price package</label>
+                        </div>
                     </div>
-                    <div class="input-field col s3">
-                        <input type="text"  class="validate" name="price" value="Rp. {{PackageDetail.pricePackage|floatformat:2}}" readonly>
-                        <label>Price package</label>
+                    <div class="row">
+                        <div class="input-field col s7">
+                            <input type="text" id="select-city-1" class="autocomplete validate" name="place" value="{{PackageDetail.cityPackage}}, {{PackageDetail.countryPackage}}" readonly>
+                            <label for="select-city-1">Select City or Place</label>
+                        </div>
+                        <div class="input-field col s5">
+                            <select name="category-package">
+                                <option value="{{PackageDetail.categoryPackage}}">{{PackageDetail.categoryPackage}}</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s7">
-                        <input type="text" id="select-city-1" class="autocomplete validate" name="place" value="{{PackageDetail.cityPackage}}, {{PackageDetail.countryPackage}}" readonly>
-                        <label for="select-city-1">Select City or Place</label>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="text" id="from" name="arrival" value="{{PackageDetail.startPackage|date:'d/m/Y'}}" disabled readonly>
+                            <label for="from">Start Date</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" id="to" name="departure" value="{{PackageDetail.endPackage|date:'d/m/Y'}}" disabled readonly>
+                            <label for="to">End Date</label>
+                        </div>
+                    </div>			
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button type="submit" class="waves-effect waves-light btn-large full-btn">Submit</button>
+                        </div>
                     </div>
-                    <div class="input-field col s5">
-                        <select name="category-package">
-                            <option value="{{PackageDetail.categoryPackage}}">{{PackageDetail.categoryPackage}}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input type="text" id="from" name="arrival" value="{{PackageDetail.startPackage|date:'d/m/Y'}}" disabled readonly>
-                        <label for="from">Start Date</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input type="text" id="to" name="departure" value="{{PackageDetail.endPackage|date:'d/m/Y'}}" disabled readonly>
-                        <label for="to">End Date</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input type="submit" value="Submit" class="waves-effect waves-light btn-large full-btn">
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </section>
