@@ -1,17 +1,18 @@
 {% extends 'main.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block mainBanner %}
 <section>
     {% include 'snippets/messages.html' %}
     <div class="rows inner_banner inner_banner_4">
         <div class="container">
-            <h2><span>{{DetailPackage.namePackage}} -</span> {{DetailPackage.categoryPackage}}</h2>
+            <h2><span>{{DetailPackage.namePackage}} Trip -</span> {{DetailPackage.categoryPackage}}</h2>
             <ul>
                 <li><a href="{% url 'travel:index' %}">Home</a>
                 </li>
                 <li><i class="fa fa-angle-right" aria-hidden="true"></i> </li>
-                <li><a href="#inner-page-title" class="bread-acti">{{DetailPackage.namePackage}}</a>
+                <li><a href="#inner-page-title" class="bread-acti">{{DetailPackage.namePackage}} Trip ({{DetailPackage.daysPackage}} Days, {{DetailPackage.countNights}} Nights)</a>
                 </li>
             </ul>
             <p>Book travel packages and enjoy your holidays with distinctive experience</p>
@@ -25,12 +26,16 @@
 <section>
     <div class="rows banner_book" id="inner-page-title">
         <div class="container">
+            <div class="banner_book_full">
+                <ul>
+                    <li><b>Location</b> : {{DetailPackage.cityPackage}}, {{DetailPackage.countryPackage}}</li>
+                </ul>
+            </div>
             <div class="banner_book_1">
                 <ul>
-                    <li class="dl1"><b>Location</b> : {{DetailPackage.cityPackage}}, {{DetailPackage.countryPackage}}</li>
-                    <li class="dl2"><b>Price</b> : Rp {{DetailPackage.pricePackage|floatformat:2}}</li>
-                    <li class="dl3"><b>Duration</b> : {{DetailPackage.countDatePackage|cut:"days, 0:00:00"}} Days</li>
-                    <li class="dl4"><a href="/booking/{{package.id}}">Book Now</a> </li>
+                    <li><b>Price</b> : Rp {{DetailPackage.pricePackage|intcomma}}</li>
+                    <li><a href="/booking/{{DetailPackage.id}}">Book Now</a> </li>
+                    <li><b>Durations</b> : {{DetailPackage.daysPackage}} Days</li>
                 </ul>
             </div>
         </div>
@@ -44,124 +49,78 @@
             <div class="col-md-9">
                 <!--====== TOUR TITLE ==========-->
                 <div class="tour_head">
-                    <h2>{{DetailPackage.namePackage}} <span class="tour_star"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half-o" aria-hidden="true"></i></span><span class="tour_rat">4.5</span></h2> </div>
+                    <h2>{{DetailPackage.namePackage}} Trip ({{DetailPackage.daysPackage}} Days, {{DetailPackage.countNights}} Nights) <span class="tour_star"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half-o" aria-hidden="true"></i></span><span class="tour_rat">4.5</span></h2> </div>
                 <!--====== TOUR DESCRIPTION ==========-->
                 <div class="tour_head1">
                     <h3>Description</h3>
                     {{DetailPackage.descriptionPackage|linebreaksbr|truncatechars:500}}
                 </div>
-                <!--====== ROOMS: HOTEL BOOKING ==========-->
-                <div class="tour_head1 hotel-book-room">
-                    <h3>Photo Gallery</h3>
+                <div class="tour_head1">
+                    <h3>Photo Package</h3>
                     <div id="myCarousel1" class="carousel slide" data-ride="carousel">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators carousel-indicators-1">
-                            <li data-target="#myCarousel1" data-slide-to="0"><img src="{% static 'images/gallery/t1.jpg' %}" alt="Chania">
-                            </li>
-                            <li data-target="#myCarousel1" data-slide-to="1"><img src="{% static 'images/gallery/t2.jpg' %}" alt="Chania">
-                            </li>
-                            <li data-target="#myCarousel1" data-slide-to="2"><img src="{% static 'images/gallery/t3.jpg' %}" alt="Chania">
-                            </li>
-                            <li data-target="#myCarousel1" data-slide-to="3"><img src="{% static 'images/gallery/t4.jpg' %}" alt="Chania">
-                            </li>
-                            <li data-target="#myCarousel1" data-slide-to="4"><img src="{% static 'images/gallery/t5.jpg' %}" alt="Chania">
-                            </li>
-                            <li data-target="#myCarousel1" data-slide-to="5"><img src="{% static 'images/gallery/s6.jpeg' %}" alt="Chania">
-                            </li>
-                            <li data-target="#myCarousel1" data-slide-to="6"><img src="{% static 'images/gallery/s7.jpeg' %}" alt="Chania">
-                            </li>
-                            <li data-target="#myCarousel1" data-slide-to="7"><img src="{% static 'images/gallery/s8.jpg' %}" alt="Chania">
-                            </li>
-                            <li data-target="#myCarousel1" data-slide-to="8"><img src="{% static 'images/gallery/s9.jpg' %}" alt="Chania">
-                            </li>
-                        </ol>
-                        <!-- Wrapper for slides -->
                         <div class="carousel-inner carousel-inner1" role="listbox">
-                            <div class="item active"> <img src="{% static 'images/gallery/t1.jpg' %}" alt="Chania" width="460" height="345"> </div>
-                            <div class="item"> <img src="{% static 'images/gallery/t2.jpg' %}" alt="Chania" width="460" height="345"> </div>
-                            <div class="item"> <img src="{% static 'images/gallery/t3.jpg' %}" alt="Chania" width="460" height="345"> </div>
-                            <div class="item"> <img src="{% static 'images/gallery/t4.jpg' %}" alt="Chania" width="460" height="345"> </div>
-                            <div class="item"> <img src="{% static 'images/gallery/t5.jpg' %}" alt="Chania" width="460" height="345"> </div>
-                            <div class="item"> <img src="{% static 'images/gallery/t6.jpg' %}" alt="Chania" width="460" height="345"> </div>
-                            <div class="item"> <img src="{% static 'images/gallery/t7.jpg' %}" alt="Chania" width="460" height="345"> </div>
-                            <div class="item"> <img src="{% static 'images/gallery/t8.jpg' %}" alt="Chania" width="460" height="345"> </div>
-                            <div class="item"> <img src="{% static 'images/gallery/t9.jpg' %}" alt="Chania" width="460" height="345"> </div>
+                            <div class="item active"> <img src="{{DetailPackage.imagePackages}}" alt="{{DetailPackage.namePackage}}" width="460" height="345"> </div>
                         </div>
-                        <!-- Left and right controls -->
-                        <a class="left carousel-control" href="#myCarousel1" role="button" data-slide="prev"> <span><i class="fa fa-angle-left hotel-gal-arr" aria-hidden="true"></i></span> </a>
-                        <a class="right carousel-control" href="#myCarousel1" role="button" data-slide="next"> <span><i class="fa fa-angle-right hotel-gal-arr hotel-gal-arr1" aria-hidden="true"></i></span> </a>
                     </div>
                 </div>
                 <!--====== TOUR LOCATION ==========-->
                 <div class="tour_head1 tout-map map-container">
                     <h3>Location</h3>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6290415.157581651!2d-93.99661009218904!3d39.661150926343694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880b2d386f6e2619%3A0x7f15825064115956!2sIllinois%2C+USA!5e0!3m2!1sen!2sin!4v1467884030780" allowfullscreen></iframe>
+                    <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCKDnhUJCPzHQgLM1_tj_ofsj7H3FxXUeQ&q={{DetailPackage.namePackage}},{{DetailPackage.cityPackage}}+{{DetailPackage.countryPackage}}" allowfullscreen></iframe>
                 </div>
                 <!--====== ABOUT THE TOUR ==========-->
                 <div class="tour_head1">
-                    <h3>About The Tour</h3>
+                    <h3>About The Trip</h3>
                     <table>
                         <tr>
                             <th>Places covered</th>
-                            <th class="event-res">Inclusions</th>
-                            <th class="event-res">Exclusions</th>
-                            <th>Event Date</th>
                         </tr>
                         <tr>
-                            <td>Rio De Janeiro ,Brazil</td>
-                            <td class="event-res">Accommodation</td>
-                            <td class="event-res">Return Airfare & Taxes</td>
-                            <td>Nov 12, 2017</td>
+                            <td>{{DetailPackage.cityPackage}}, {{DetailPackage.countryPackage}}</td>
+                        </tr>
+                    </table><br>
+                    <table>
+                        <tr>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Total Date</th>
                         </tr>
                         <tr>
-                            <td>Iguassu Falls </td>
-                            <td class="event-res">8 Breakfast, 3 Dinners</td>
-                            <td class="event-res">Arrival & Departure transfers</td>
-                            <td>Nov 14, 2017</td>
+                            <td>{{DetailPackage.startPackage}}</td>
+                            <td>{{DetailPackage.endPackage}}</td>
+                            <td>{{DetailPackage.daysPackage}} Days, {{DetailPackage.countNights}} Nights</td>
+                        </tr>
+                    </table><br>
+                    <table>
+                        <tr>
+                            <th>Price Package</th>
+                            <th>Available</th>
+                            <th>Add-on</th>
                         </tr>
                         <tr>
-                            <td>Peru,Lima </td>
-                            <td class="event-res">First-class Travel</td>
-                            <td class="event-res">travel insurance</td>
-                            <td>Nov 16, 2017</td>
+                            <td>Rp {{DetailPackage.pricePackage|intcomma}}</td>
+                            <td>{{DetailPackage.availablePackage}} left</td>
+                            <td>{% if DetailPackage.addOnPackage is null %}-{% else %}{{DetailPackage.availablePackage}}{% endif %}</td>
                         </tr>
-                        <tr>
-                            <td>Cusco & Buenos Aires </td>
-                            <td class="event-res">Free Sightseeing</td>
-                            <td class="event-res">Service tax of 4.50%</td>
-                            <td>Nov 18, 2017</td>
-                        </tr>
-                    </table>
+                    </table><br>
                 </div>
             </div>
             <div class="col-md-3 tour_r">
-                <!--====== SPECIAL OFFERS ==========-->
-                <div class="tour_right tour_offer">
-                    <div class="band1"><img src="{% static 'images/offer.png' %}" alt=" /> </div>
-                    <p>Special Offer</p>
-                    <h4>$500<span class="n-td">
-                            <span class="n-td-1">$800</span>
-                            </span>
-                        </h4> <a href="booking.html" class="link-btn">Book Now</a> </div>
                 <!--====== TRIP INFORMATION ==========-->
                 <div class="tour_right tour_incl tour-ri-com">
                     <h3>Trip Information</h3>
                     <ul>
-                        <li>Location : Rio,Brazil</li>
-                        <li>Arrival Date: Nov 12, 2017</li>
-                        <li>Departure Date: Nov 21, 2017</li>
-                        <li>Free Sightseeing & Hotel</li>
+                        <li>Location: {{DetailPackage.cityPackage}}, {{DetailPackage.countryPackage}}</li>
+                        <li>Arrival Date: {{DetailPackage.startPackage|date:'d F, Y'}}</li>
+                        <li>Departure Date: {{DetailPackage.endPackage|date:'d F, Y'}}</li>
+                        <li>{{DetailPackage.categoryPackage}}</li>
                     </ul>
                 </div>
                 <!--====== PACKAGE SHARE ==========-->
                 <div class="tour_right head_right tour_social tour-ri-com">
                     <h3>Share This Package</h3>
                     <ul>
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
-                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
-                        <li><a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a> </li>
+                        <li><a href="whatsapp://send?text=Sarayu Travel!%0a{{DetailPackage.namePackage}} Trip ({{DetailPackage.daysPackage}} Days, {{DetailPackage.countNights}} Nights)%0a" data-action="share/whatsapp/share"><i class="fa fa-whatsapp" aria-hidden="true"></i></a> </li>
                     </ul>
                 </div>
                 <!--====== HELP PACKAGE ==========-->
@@ -169,20 +128,7 @@
                     <h3>Help & Support</h3>
                     <div class="tour_help_1">
                         <h4 class="tour_help_1_call">Call Us Now</h4>
-                        <h4><i class="fa fa-phone" aria-hidden="true"></i> 10-800-123-000</h4> </div>
-                </div>
-                <!--====== PUPULAR TOUR PACKAGES ==========-->
-                <div class="tour_right tour_rela tour-ri-com">
-                    <h3>Popular Packages</h3>
-                    <div class="tour_rela_1"> <img src="{% static 'images/related1.png' %}" alt=" />
-                        <h4>Dubai 7Days / 6Nights</h4>
-                        <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p> <a href="#" class="link-btn">View this Package</a> </div>
-                    <div class="tour_rela_1"> <img src="{% static 'images/related2.png' %}" alt=" />
-                        <h4>Mauritius 4Days / 3Nights</h4>
-                        <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p> <a href="#" class="link-btn">View this Package</a> </div>
-                    <div class="tour_rela_1"> <img src="{% static 'images/related3.png' %}" alt=" />
-                        <h4>India 14Days / 13Nights</h4>
-                        <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p> <a href="#" class="link-btn">View this Package</a> </div>
+                        <h4><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:6285770860049">+62 857 7086 0049</a></h4> </div>
                 </div>
             </div>
         </div>

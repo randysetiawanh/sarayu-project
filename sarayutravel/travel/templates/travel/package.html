@@ -1,5 +1,6 @@
 {% extends 'main.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block mainBanner %}
 <section>
@@ -105,13 +106,13 @@
                             <div class="hot-page2-hli-3"> <img src="{% static 'images/hci1.png' %}" alt=""> </div>
                             <div class="hom-hot-av-tic"> Available Tickets: {{items.availablePackage}} </div> <img src="{{items.imagePackages}}" alt=""> </div>
                         <div class="to-ho-hotel-con-23">
-                            <div class="to-ho-hotel-con-2"> <a href="#"><h4>{{items.namePackage}}</h4></a> </div>
+                            <div class="to-ho-hotel-con-2"> <a href="/package/detail/{{items.id}}"><h4>{{items.namePackage}} Trip ({{items.daysPackage}} Days, {{items.countNights}} Nights)</h4></a> </div>
                             <div class="to-ho-hotel-con-3">
                                 <ul>
                                     <li>{{items.cityPackage}}, {{items.countryPackage}}
                                         <div class="dir-rat-star ho-hot-rat-star"> Rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> </div>
                                     </li>
-                                    <li><span class="ho-hot-pri">Rp{{items.pricePackage|floatformat:2}}</span> </li>
+                                    <li><span class="ho-hot-pri">Rp{{items.pricePackage|intcomma}}</span> </li>
                                 </ul>
                             </div>
                         </div>
@@ -139,25 +140,28 @@
             {% for package in Package %}
             <div class="rows p2_2">
                 <div class="col-md-6 col-sm-6 col-xs-12 p2_1">
-                    <div class="band"><img src="{% static 'images/band.png' %}" alt="" />
-                    </div>
                     <img src="{{package.imagePackages}}" alt="" />
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12 p2">
-                    <h3>{{package.namePackage}} <span><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half-o" aria-hidden="true"></i></span></h3>
+                    <h3>{{package.namePackage}} Trip ({{package.daysPackage}} Days, {{package.countNights}} Nights) <span><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half-o" aria-hidden="true"></i></span></h3>
                     <p>{{package.descriptionPackage|truncatechars:100}}</p>
                     <div class="ticket">
                         <ul>
                             <li>Available Tickets : {{package.availablePackage}}</li>
+                            <li>Start Date : {{package.startPackage|date:'d-m-Y'}}</li>
+                            <li>End Date : {{package.endPackage|date:'d-m-Y'}}</li>
                         </ul>
                     </div>
                     <div class="featur">
-                        <h4>Package Locations</h4>
+                        <h4>Package Details</h4>
                         <ul>
                             <li>{{package.cityPackage}}, {{package.countryPackage}}({{package.daysPackage}} days)</li>
-                            <li>{{package.addonPackage}}</li>
+                            <li>{% if package.addonPackage is null %}Add-on: None{% else %}{{package.addonPackage}}{% endif %}</li>
                             <li>{{package.categoryPackage}}</li>
                         </ul>
+                    </div>
+                    <div class="featur">
+                        <span class="ho-hot-pri-detail">Rp{{package.pricePackage|intcomma}}</span>
                     </div>
                     <div class="p2_book">
                         <ul>
