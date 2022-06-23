@@ -3,22 +3,6 @@
 {% load humanize %}
 
 {% block mainBanner %}
-<section>
-    {% include 'snippets/messages.html' %}
-    <div class="rows inner_banner inner_banner_4">
-        <div class="container">
-            <h2><span>{{DetailPackage.namePackage}} Trip -</span> {{DetailPackage.categoryPackage}}</h2>
-            <ul>
-                <li><a href="{% url 'travel:index' %}">Home</a>
-                </li>
-                <li><i class="fa fa-angle-right" aria-hidden="true"></i> </li>
-                <li><a href="#inner-page-title" class="bread-acti">{{DetailPackage.namePackage}} Trip ({{DetailPackage.daysPackage}} Days, {{DetailPackage.countNights}} Nights)</a>
-                </li>
-            </ul>
-            <p>Book travel packages and enjoy your holidays with distinctive experience</p>
-        </div>
-    </div>
-</section>
 {% endblock mainBanner %}
 
 {% block mainContent %}
@@ -26,11 +10,6 @@
 <section>
     <div class="rows banner_book" id="inner-page-title">
         <div class="container">
-            <div class="banner_book_full">
-                <ul>
-                    <li><b>Location</b> : {{DetailPackage.cityPackage}}, {{DetailPackage.countryPackage}}</li>
-                </ul>
-            </div>
             <div class="banner_book_1">
                 <ul>
                     <li><b>Price</b> : Rp {{DetailPackage.pricePackage|intcomma}}</li>
