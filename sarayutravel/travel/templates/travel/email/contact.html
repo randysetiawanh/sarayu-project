@@ -104,7 +104,7 @@
                               <tr>
                                 <td style="width:100%;padding-right:0px;padding-left:0px;">
                                   <div align="center" style="line-height:10px">
-                                    <img alt="Alternate text" class="big" src="{{Booking.packageBooking.imagePackages}}" style="display: block; height: auto; border: 0; width: 700px; max-width: 100%;" title="Alternate text" width="700" />
+                                    <img alt="Alternate text" class="big" src="https://i.ibb.co/7k2XLJZ/sarayu-removebg.png" style="display: block; height: auto; padding-top:25px; padding-bottom:50px; border: 0; width: 300px; max-width: 100%;" title="Alternate text"/>
                                   </div>
                                 </td>
                               </tr>
@@ -131,8 +131,8 @@
                                   <div style="font-family: sans-serif">
                                     <div class="txtTinyMce-wrapper" style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #0b1560; line-height: 1.2;">
                                       <p style="margin: 0; font-size: 16px; text-align: center;">
-                                        <span style="font-size:42px;">
-                                          <strong>Hi {{Booking.customerBooking.nameCustomer}},</strong>
+                                        <span style="font-size:30px;">
+                                          <strong>Hi {{Name}},</strong>
                                         </span>
                                       </p>
                                     </div>
@@ -146,12 +146,9 @@
                                   <div style="font-family: sans-serif">
                                     <div class="txtTinyMce-wrapper" style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 18px; color: #555555; line-height: 1.5;">
                                       <p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 22.5px;">
-                                        <span style="font-size:15px;">Your package to <span style="color:#0b1560;">
-                                            <strong>{{Booking.packageBooking.cityPackage}}, {{Booking.packageBooking.countryPackage}}</strong>
-                                          </span> starts on <span style="color:#0b1560;">
-                                            <strong>
-                                              <span style="">{{Booking.packageBooking.startPackage}}</span>
-                                            </strong>
+                                        <span style="font-size:15px;">
+                                          Ini adalah email kontak dari <span style="color:#0b1560;"><strong>{{Email}}</strong></span>
+                                        </span>
                                       </p>
                                     </div>
                                   </div>
@@ -181,7 +178,7 @@
                                     <div class="txtTinyMce-wrapper" style="font-size: 12px; mso-line-height-alt: 14.399999999999999px; color: #0b1560; line-height: 1.2; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;">
                                       <p style="margin: 0; font-size: 14px; text-align: center;">
                                         <span style="font-size:24px;">
-                                          <strong>YOUR TRIP</strong>
+                                          <strong>Detail Pesan</strong>
                                         </span>
                                       </p>
                                     </div>
@@ -213,7 +210,7 @@
                                       <p style="margin: 0; font-size: 14px; text-align: left;">
                                         <span style="color:#000000;">
                                           <strong>
-                                            <span style="font-size:18px;">Package Name</span>
+                                            <span style="font-size:18px;">Nama</span>
                                           </strong>
                                         </span>
                                       </p>
@@ -230,7 +227,7 @@
                                   <div style="font-family: sans-serif">
                                     <div class="txtTinyMce-wrapper" style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 21.6px; color: #555555; line-height: 1.8;">
                                       <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 27px;">
-                                        <span style="font-size:15px;">{{Booking.packageBooking.namePackage}}</span>
+                                        <span style="font-size:15px;">{{Name}}</span>
                                       </p>
                                     </div>
                                   </div>
@@ -261,7 +258,7 @@
                                       <p style="margin: 0; font-size: 14px; text-align: left;">
                                         <span style="color:#000000;">
                                           <strong>
-                                            <span style="font-size:18px;">Place</span>
+                                            <span style="font-size:18px;">Email & Nomor Handphone</span>
                                           </strong>
                                         </span>
                                       </p>
@@ -278,7 +275,7 @@
                                   <div style="font-family: sans-serif">
                                     <div class="txtTinyMce-wrapper" style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 21.6px; color: #555555; line-height: 1.8;">
                                       <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 27px;">
-                                        <span style="font-size:15px;">{{Booking.packageBooking.cityPackage}}, {{Booking.packageBooking.countryPackage}}</span>
+                                        <span style="font-size:15px;">{{Email}}, {{Phone}}</span>
                                       </p>
                                     </div>
                                   </div>
@@ -309,7 +306,7 @@
                                       <p style="margin: 0; font-size: 14px; text-align: left;">
                                         <span style="color:#000000;">
                                           <strong>
-                                            <span style="font-size:18px;">Days and Price</span>
+                                            <span style="font-size:18px;">Jenis Bantuan</span>
                                           </strong>
                                         </span>
                                       </p>
@@ -326,11 +323,55 @@
                                   <div style="font-family: sans-serif">
                                     <div class="txtTinyMce-wrapper" style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 21.6px; color: #555555; line-height: 1.8;">
                                       <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 27px;">
-                                        <span style="font-size:15px;">{{Booking.packageBooking.daysPackage}} Days</span>
+                                        <span style="font-size:15px;">{{Subject}}</span>
                                       </p>
+                                    </div>
+                                  </div>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-8" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+              <tbody>
+                <tr>
+                  <td>
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; color: #000000; width: 700px;" width="700">
+                      <tbody>
+                        <tr>
+                          <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="33.333333333333336%">
+                            <table border="0" cellpadding="0" cellspacing="0" class="text_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
+                              <tr>
+                                <td style="padding-bottom:10px;padding-left:25px;padding-right:10px;padding-top:20px;">
+                                  <div style="font-family: sans-serif">
+                                    <div class="txtTinyMce-wrapper" style="font-size: 12px; mso-line-height-alt: 14.399999999999999px; color: #555555; line-height: 1.2; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;">
+                                      <p style="margin: 0; font-size: 14px; text-align: left;">
+                                        <span style="color:#000000;">
+                                          <strong>
+                                            <span style="font-size:18px;">Isi Pesan</span>
+                                          </strong>
+                                        </span>
+                                      </p>
+                                    </div>
+                                  </div>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td class="column column-2" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="66.66666666666667%">
+                            <table border="0" cellpadding="0" cellspacing="0" class="text_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
+                              <tr>
+                                <td style="padding-bottom:15px;padding-left:30px;padding-right:30px;padding-top:15px;">
+                                  <div style="font-family: sans-serif">
+                                    <div class="txtTinyMce-wrapper" style="font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 21.6px; color: #555555; line-height: 1.8;">
                                       <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 27px;">
-                                        <span style="font-size:15px;">Rp. {{Booking.paymentBooking.pricePayment}}</span>
-                                        <span style="font-size:15px;">Rp. {{Booking.packageBooking.pricePackage}}</span>
+                                        <span style="font-size:15px;">{{Message|linebreaksbr}}</span>
                                       </p>
                                     </div>
                                   </div>
@@ -434,13 +475,13 @@
                                   <div style="font-family: sans-serif">
                                     <div class="txtTinyMce-wrapper" style="font-size: 12px; mso-line-height-alt: 18px; color: #C0C0C0; line-height: 1.5; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;">
                                       <p style="margin: 0; mso-line-height-alt: 18px;">
-                                        <span style="color:#C0C0C0;font-size:12px;">www.company.com</span>
+                                        <span style="color:#C0C0C0;font-size:12px;">Sarayu Travel</span>
                                       </p>
                                       <p style="margin: 0; mso-line-height-alt: 18px;">
                                         <span style="color:#C0C0C0;font-size:12px;"></span>
                                       </p>
                                       <p style="margin: 0; mso-line-height-alt: 18px;">
-                                        <span style="color:#C0C0C0;font-size:12px;">Company address here <br />+1 123 123 123 </span>
+                                        <span style="color:#C0C0C0;font-size:12px;">Jl. Nangka No.36, RT.001/RW.009<br>Kel. Jatiraden, Kec. Jatisampurna<br>Kota Bks, Jawa Barat 17433 <br>+62 895 2031 432</span>
                                       </p>
                                       <p style="margin: 0; mso-line-height-alt: 18px;"></p>
                                     </div>

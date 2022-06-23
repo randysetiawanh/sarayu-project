@@ -53,40 +53,61 @@
         </div>
     </div>
 </section>	
-
-<!--====== ALL TESTIMONIALS ==========-->
-<section>
-        <div class="container tb-space inn-page-con-bg pad-bot-redu" id="inner-page-title">
-            <!-- TITLE & DESCRIPTION -->
-            <div class="spe-title">
-                <h2>Customer <span>Testimonials</span></h2>
-                <div class="title-line">
-                    <div class="tl-1"></div>
-                    <div class="tl-2"></div>
-                    <div class="tl-3"></div>
+<section class="tourb2-ab-p-3 com-colo-abou" style="margin-bottom: 100px;">
+    <div class="container">
+        <div class="row tourb2-ab-p3">
+            <div class="col-md-4 col-sm-6">
+                <div class="tourb2-ab-p3-1 tourb2-ab-p3-com"> <span>{{CountPackages}}</span>
+                    <h4>Packages</h4>
+                    <p>Terdapat {{CountPackages}} paket travel yang sudah ditampilkan di Sarayu Travel!</p>
                 </div>
-                <p>Berikut adalah testimoni dari beberapa pelanggan terbaru Sarayu Travel yang sudah merasakan pengalaman menarik di berbagai destinasi Indonesia. </p>
             </div>
-            <div class="p_testimonial">
-                {% for testimonial in NewTestimonial %}
-                <!--====== TESTIMONIALS ======-->
-                <div class="col-md-6">
-                    <div class="p-tesi">
-                        <div class="col-md-3 col-sm-3"> <img src="{% static 'images/img/test.png' %}" alt="">
-                        </div>
-                        <div class="col-md-9 col-sm-9">
-                            <h4>{{testimonial.nameTestimonial}}</h4>
-                            <div><span class="tour_star"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half-o" aria-hidden="true"></i></span></div>
-                            <p>{{testimonial.commentTestimonial}}</p>
-                            <address>{{testimonial.dateTestimonial}}</address>
-                        </div>
-                    </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="tourb2-ab-p3-1 tourb2-ab-p3-com"> <span>{{CountBookings}}</span>
+                    <h4>Bookings</h4>
+                    <p>Sudah ada {{CountBookings}} bookingan yang sudah menjadi bagian dari Sarayu Travel!</p>
                 </div>
-                <!--====== TESTIMONIALS ======-->
-                {% endfor %}
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="tourb2-ab-p3-1 tourb2-ab-p3-com"> <span>{{CountTestimonials}}</span>
+                    <h4>Testimonials</h4>
+                    <p>Ada {{CountTestimonials}} masukan atau testimonial yang sudah diberikan kepada Sarayu Travel!</p>
+                </div>
             </div>
         </div>
     </div>
 </section>
-
+<!--====== ALL TESTIMONIALS ==========-->
+<section>
+    <div class="container tb-space inn-page-con-bg pad-bot-redu" id="testimonial">
+        <!-- TITLE & DESCRIPTION -->
+        <div class="spe-title">
+            <h2>Customer <span>Testimonials</span></h2>
+            <div class="title-line">
+                <div class="tl-1"></div>
+                <div class="tl-2"></div>
+                <div class="tl-3"></div>
+            </div>
+            <p>Berikut adalah testimoni dari beberapa pelanggan terbaru Sarayu Travel yang sudah merasakan pengalaman menarik di berbagai destinasi Indonesia. </p>
+        </div>
+        <div class="p_testimonial">
+            {% for testimonial in NewTestimonial %}
+            <!--====== TESTIMONIALS ======-->
+            <div class="col-md-6 col-sm-6 col-xs-12 b_packages wow fadeInUp">
+                <div class="p-tesi">
+                    <div class="col-md-3 col-sm-3"> <img src="{% static 'images/img/test.png' %}" alt="">
+                    </div>
+                    <div class="col-md-9 col-sm-9">
+                        <h4>{{testimonial.nameTestimonial}}</h4>
+                        <div><span class="tour_star"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half-o" aria-hidden="true"></i></span></div>
+                        <p>{{testimonial.commentTestimonial}}</p>
+                        <address>{{testimonial.dateTestimonial|date:'j F Y'}}</address>
+                    </div>
+                </div>
+            </div>
+            <!--====== TESTIMONIALS ======-->
+            {% endfor %}
+        </div>
+    </div>
+</section>
 {% endblock mainContent %}

@@ -1,0 +1,78 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block mainBanner %}
+<section>
+    {% include 'snippets/messages.html' %}
+    <div class="rows inner_banner inner_banner_4">
+        <div class="container">
+            <h2><span>Contact</span> Us</h2>
+            <ul>
+                <li><a href="{% url 'travel:index' %}">Home</a>
+                </li>
+                <li><i class="fa fa-angle-right" aria-hidden="true"></i> </li>
+                <li><a href="#contactform" class="bread-acti">Contact Us</a>
+                </li>
+            </ul>
+            <p>Hubungi kami jika Anda mengalami kesulitan, tim kami akan segera membantu Anda!</p>
+        </div>
+    </div>
+</section>
+{% endblock mainBanner %}
+
+{% block mainContent %}
+<section style="margin-top: 150px;" id="contactform">
+    <div class="form tb-space pad-top-o">
+        <div class="rows container">
+            <div class="spe-title">
+                <h2>Hubungi <span>Kami</span> Sekarang!</h2>
+                <div class="title-line">
+                    <div class="tl-1"></div>
+                    <div class="tl-2"></div>
+                    <div class="tl-3"></div>
+                </div>
+                <p>Silahkan isi formulir dibawah untuk menghubungi Sarayu Travel. Setelah pesan terkirim, kami akan segera mungkin untuk menghubungi Anda!</p>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 form_1">
+                <div class="succ_mess">Thank you for contacting us we will get back to you soon.</div>
+                <form class="v2-search-form" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="text" id="name" name="name" class="autocomplete" required>
+                            <label for="name">Masukkan Nama</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" id="phone" name="phone" class="autocomplete" required>
+                            <label for="phone">Masukkan Nomor Handphone</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input type="email" id="email" name="email" class="autocomplete" required>
+                            <label for="email">Masukkan Email</label>
+                        </div>
+                        <div class="input-field col s12" id="subject">
+                            <select name="subject" id="subject" id="subject" required>
+                                <option value="" disabled selected>- Pilih Subject -</option>
+                                <option value="Pemesanan">Pemesanan</option>
+                                <option value="Pembayaran">Pembayaran</option>
+                                <option value="Pembatalan Pesanan">Pembatalan Pesanan</option>
+                                <option value="Bantuan Lainnya">Bantuan Lainnya</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s12">
+                            <textarea style="resize:none; height:200px;" name="message" class="autocomplete" required></textarea>
+                            <label for="message">Masukkan Deskripsi Pesan</label>
+                        </div>
+                    </div>						
+                    <div class="row">
+                        <div class="input-field col s8"></div>
+                        <div class="input-field col s4">
+                            <button type="submit" class="waves-effect waves-light tourz-sear-btn v2-ser-btn btn-large full-btn">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock mainContent %}
