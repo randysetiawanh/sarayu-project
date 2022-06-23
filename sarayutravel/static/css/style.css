@@ -4937,12 +4937,11 @@
 /* REGISTER AND LOGIN 
 /*-------------------------------------------------------*/
  .tr-register {
-     background: url(../images/face.jpg) no-repeat;
-     position: relative;
-    /* overflow: hidden;
-     */
-     display: inline-block;
-     width: 100%;
+     background: url(../images/face.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
  .tr-register::before {
      content: '';
@@ -7759,6 +7758,10 @@
      bottom: 0px;
      left: 0px;
      width: 100%;
+}
+ .cus-book-form2{
+     width:85%;
+     margin:0 auto;
 }
  .cus-title{
 }
