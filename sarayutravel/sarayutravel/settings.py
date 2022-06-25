@@ -123,7 +123,7 @@ EMAIL_HOST_USER = 'mini.mbul@gmail.com'
 EMAIL_HOST_PASSWORD = 'dquqersuwqfygleg'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Sarayu Travel <noreply@sarayutravel.com>'
-DEFAULT_CONTACT_EMAIL = 'randysetiawanh@gmail.com'
+DEFAULT_CONTACT_EMAIL = 'natexyz.co@gmail.com'
 
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-secondary',
