@@ -88,6 +88,12 @@ class Booking(models.Model):
     def __str__(self):
         return "{}. {} - {} ({})".format(self.id, self.customerBooking, self.packageBooking, self.dateBooking)
         
+class BookingSummary(Booking):
+	class Meta:
+		proxy = True
+		verbose_name = 'Booking Summary'
+		verbose_name_plural = 'Booking Summary'
+
 class Testimonial(models.Model):
     nameTestimonial = models.CharField(max_length=100, null=True)
     commentTestimonial = models.TextField(max_length=500)

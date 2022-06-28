@@ -1,0 +1,60 @@
+{% extends "admin/change_list.html" %}
+
+{% block content_title %}
+    <h1> Sales Summary </h1>
+{% endblock %}
+
+{% load humanize %}
+
+<!-- ... -->
+
+{% block result_list %}
+
+<div class="results">
+    <table>
+
+    <thead>
+        <tr>
+            <th><div class="text"><a href="#">Date Booking</a></div></th>
+            <th><div class="text"><a href="#">Customer Booking</a></div></th>
+            <th><div class="text"><a href="#">Code Booking</a></div></th>
+            <th><div class="text"><a href="#">Payment Method</a></div></th>
+            <th><div class="text"><a href="#">Total Sales</a></div></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for row in summary %}
+        <tr class="{% cycle 'row1' 'row2' %}">
+            <td>{{ row.paymentBooking__datePayment|date:"M d, Y" }}</td>
+            <td>{{ row.customerBooking__emailCustomer }}</td>
+            <td><a href="/admin/travel/booking/{{ row.id }}">{{ row.codeBooking }}</a></td>
+            <td> 
+                {% if row.paymentBooking__methodPayment == "credit_card" %}
+                    Credit Card
+                {% elif row.paymentBooking__methodPayment == "qris"%}
+                    QRIS
+                {% else %}
+                    Others
+                {% endif %} 
+            </td>
+            <td> Rp. {{ row.total_sales|default:0|intcomma }} </td>
+        </tr>
+        {% endfor %}
+        <tr style="font-weight:bold; border-top:2px solid #DDDDDD;">
+            <td> Total </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> Rp. {{ summary_total.total_sales|default:0|intcomma }} </td>
+        </tr>
+    </tbody>
+
+  </table>
+</div>
+
+<!-- ... -->
+
+{% endblock %}
+
+{% block pagination %}{% endblock %}
